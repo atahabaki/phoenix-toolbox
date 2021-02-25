@@ -10,4 +10,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
+
+    fun execRoot(command: String) {
+        try {
+            java.lang.Runtime.getRuntime().exec("su -c $command")
+        } catch (e: Exception) {
+            Log.d("${applicationContext.packageName}.ExecRoot","Exception thrown... ${e.message}")
+        }
+    }
 }
