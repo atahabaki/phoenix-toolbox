@@ -3,8 +3,8 @@ package dev.atahabaki.shamrocktoolbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
-import java.lang.Exception
 
 class HomeActivity : AppCompatActivity() {
 
@@ -13,6 +13,20 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView()
+        initBottomNav()
+    }
+
+    private fun initBottomNav() {
+        val bottomSheetBehavior = BottomSheetBehavior.from(binding.mainFramer)
+        bottomSheetBehavior.isHideable = true
+        bottomSheetBehavior.peekHeight = binding.mainBottomAppbar.height
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        binding.mainBottomAppbar.setNavigationOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
+        }
+        binding.root.setOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
     }
 
     private fun initView() {
