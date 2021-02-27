@@ -16,12 +16,4 @@ class HomeActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
     }
-
-    fun execRoot(command: String) {
-        try {
-            java.lang.Runtime.getRuntime().exec("su -c $command")
-        } catch (e: Exception) {
-            Log.d("${applicationContext.packageName}.ExecRoot","Exception thrown... ${e.message}")
-        }
-    }
 }
