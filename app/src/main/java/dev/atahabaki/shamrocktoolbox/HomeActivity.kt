@@ -2,7 +2,6 @@ package dev.atahabaki.shamrocktoolbox
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
