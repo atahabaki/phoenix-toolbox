@@ -23,11 +23,15 @@ class HomeActivity : AppCompatActivity() {
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.peekHeight = binding.mainBottomAppbar.height
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
-        binding.mainBottomAppbar.setNavigationOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
-        }
+        initBottomAppBarNavigationClick()
         binding.root.setOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        }
+    }
+
+    private fun initBottomAppBarNavigationClick() {
+        binding.mainBottomAppbar.setNavigationOnClickListener {
+            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HALF_EXPANDED
         }
     }
 
