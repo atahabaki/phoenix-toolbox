@@ -8,8 +8,7 @@ import java.lang.Exception
 
 class HomeActivity : AppCompatActivity() {
 
-    private var _binding: ActivityHomeBinding? = null
-    private val binding get() = _binding!!
+    private lateinit var binding: ActivityHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
