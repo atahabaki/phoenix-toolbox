@@ -6,7 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
-    
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:navigationIcon="@drawable/ic_menu"/>
+
     <FrameLayout
         android:id="@+id/main_framer"
         android:layout_width="match_parent"
@@ -19,11 +25,5 @@
         android:layout_gravity="bottom"
         app:itemIconTint="@color/primaryLightColor"
         app:menu="@menu/main_menu"/>
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:navigationIcon="@drawable/ic_menu"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
