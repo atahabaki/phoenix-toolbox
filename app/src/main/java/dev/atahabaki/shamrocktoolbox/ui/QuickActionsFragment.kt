@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
+import dev.atahabaki.shamrocktoolbox.execRoot
+import java.io.BufferedReader
+import java.io.InputStreamReader
 import java.lang.Exception
 
 class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
@@ -35,6 +38,14 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
        try {
            val p = java.lang.Runtime.getRuntime().exec("getprop $prop")
            p.waitFor()
+           val stdOut = BufferedReader(InputStreamReader(p.inputStream))
+           val line = stdOut.readLine()
+           if (line.trim() == "1") {
+               execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
+           }
+           else {
+               execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
+           }
        } catch (e: Exception) {
            Log.d("${activity.packageName}.toggleGcam","${e.message}")
        }
