@@ -4,4 +4,7 @@
     <string name="coffee">Buy me a coffee</string>
     <string name="send_feedback">Send feedback</string>
     <string name="toggle_gcam">Toggle Gcam</string>
+    <string name="reboot">Reboot</string>
+    <string name="gcam_status_disabled">Gcam is disabled.</string>
+    <string name="gcam_status_enabled">Gcam is enabled.</string>
 </resources>
