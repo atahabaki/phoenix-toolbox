@@ -44,7 +44,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
             if (line.trim() == "1") {
                 disableGcam(prop)
             } else {
-                enableGcam()
+                enableGcam(prop)
             }
         } catch (e: Exception) {
             Log.d("${activity?.packageName}.toggleGcam", "${e.message}")
