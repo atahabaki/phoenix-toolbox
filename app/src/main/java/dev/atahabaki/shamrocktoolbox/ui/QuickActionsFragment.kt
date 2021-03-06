@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
+import dev.atahabaki.shamrocktoolbox.exec
 import dev.atahabaki.shamrocktoolbox.execRoot
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -64,6 +65,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     fun notify(@StringRes resId: Int, @StringRes actionId: Int) {
         val contextView = binding.root
         Snackbar.make(binding.root,resId,Snackbar.LENGTH_SHORT).setAction(actionId) {
+            execRoot("reboot", "${activity?.packageName}.notify.reboot")
         }.show()
     }
 }
