@@ -66,6 +66,6 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         val contextView = binding.root
         Snackbar.make(binding.root,resId,Snackbar.LENGTH_SHORT).setAction(actionId) {
             exec("reboot", "${activity?.packageName}.notify.reboot")
-        }.show()
+        }.setAnchorView(R.id.main_bottom_appbar).show()
     }
 }
