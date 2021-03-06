@@ -35,13 +35,14 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     }
 
     fun toggleGcam() {
+        val prop = "persist.camera.HAL3.enabled"
         try {
             val p = java.lang.Runtime.getRuntime().exec("getprop $prop")
             p.waitFor()
             val stdOut = BufferedReader(InputStreamReader(p.inputStream))
             val line = stdOut.readLine()
             if (line.trim() == "1") {
-                disableGcam()
+                disableGcam(prop)
             } else {
                 enableGcam()
             }
@@ -50,14 +51,12 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         }
     }
 
-    fun disableGcam() {
-        val prop = "persist.camera.HAL3.enabled"
+    fun disableGcam(prop: String) {
         execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
         notify(R.string.gcam_status_disabled,R.string.reboot)
     }
 
-    fun enableGcam() {
-        val prop = "persist.camera.HAL3.enabled"
+    fun enableGcam(prop: String) {
         execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
         notify(R.string.gcam_status_enabled,R.string.reboot)
     }
@@ -65,7 +64,6 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     fun notify(@StringRes resId: Int, @StringRes actionId: Int) {
         val contextView = binding.root
         Snackbar.make(binding.root,resId,Snackbar.LENGTH_SHORT).setAction(actionId) {
-
         }.show()
     }
 }
