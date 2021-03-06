@@ -47,7 +47,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
                execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
            }
        } catch (e: Exception) {
-           Log.d("${activity.packageName}.toggleGcam","${e.message}")
+           Log.d("${activity?.packageName}.toggleGcam","${e.message}")
        }
     }
 }
