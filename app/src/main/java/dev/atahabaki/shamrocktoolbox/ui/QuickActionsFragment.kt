@@ -43,8 +43,10 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
             val line = stdOut.readLine()
             if (line.trim() == "1") {
                 execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
+                notify(R.string.gcam_status_disabled,R.string.reboot)
             } else {
                 execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
+                notify(R.string.gcam_status_enabled,R.string.reboot)
             }
         } catch (e: Exception) {
             Log.d("${activity?.packageName}.toggleGcam", "${e.message}")
@@ -55,6 +57,6 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         val contextView = binding.root
         Snackbar.make(binding.root,resId,Snackbar.LENGTH_SHORT).setAction(actionId) {
 
-        }
+        }.show()
     }
 }
