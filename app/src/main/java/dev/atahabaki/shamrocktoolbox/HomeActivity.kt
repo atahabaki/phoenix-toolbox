@@ -3,8 +3,11 @@ package dev.atahabaki.shamrocktoolbox
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.fragment.app.add
+import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
+import dev.atahabaki.shamrocktoolbox.ui.QuickActionsFragment
 
 class HomeActivity : AppCompatActivity() {
 
@@ -15,6 +18,12 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         initView()
         initBottomNav()
+        if (savedInstanceState == null) {
+            supportFragmentManager.commit {
+                setReorderingAllowed(true)
+                add<QuickActionsFragment>(R.id.main_fragment_container)
+            }
+        }
     }
 
     private fun initBottomNav() {
