@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
+import java.lang.Exception
 
 class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     private var _binding: FragmentQuickActionsBinding? = null
@@ -29,5 +30,13 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         }
     }
 
-    fun toggleGcam() {}
+    fun toggleGcam() {
+        val prop = "persist.camera.HAL3.enabled"
+       try {
+           val p = java.lang.Runtime.getRuntime().exec("getprop $prop")
+           p.waitFor()
+       } catch (e: Exception) {
+           Log.d("${activity.packageName}.toggleGcam","${e.message}")
+       }
+    }
 }
