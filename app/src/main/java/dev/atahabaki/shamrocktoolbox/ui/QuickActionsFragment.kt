@@ -25,7 +25,9 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.quickAccessToggleGcam.setOnClickListener {
-
+            toggleGcam()
         }
     }
+
+    fun toggleGcam() {}
 }
