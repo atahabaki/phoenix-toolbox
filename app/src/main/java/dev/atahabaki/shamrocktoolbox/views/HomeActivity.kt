@@ -1,5 +1,7 @@
 package dev.atahabaki.shamrocktoolbox.views
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -40,6 +42,25 @@ class HomeActivity : AppCompatActivity() {
                 notify(R.string.gcam_status_disabled)
             }
         })
+        binding.mainNavigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.main_menu_home -> {
+                    dismissMainNavView()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.main_menu_coffee -> {
+                    dismissMainNavView()
+                    gotoBuyMeACoffee()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.main_menu_send_feedback -> {
+                    dismissMainNavView()
+                    gotoIssues()
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
     }
 
 
