@@ -34,7 +34,7 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
-    fun notify(@StringRes resId: Int, @StringRes actionId: Int) {
+    private fun notify(@StringRes resId: Int, @StringRes actionId: Int) {
         val contextView = binding.root
         Snackbar.make(binding.root,resId, Snackbar.LENGTH_SHORT).setAction(actionId) {
             exec("reboot", "${activity?.packageName}.notify.reboot")
