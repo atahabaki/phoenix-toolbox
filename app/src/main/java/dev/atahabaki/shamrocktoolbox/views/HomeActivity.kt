@@ -3,16 +3,24 @@ package dev.atahabaki.shamrocktoolbox.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.activity.viewModels
+import androidx.annotation.StringRes
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
+import dev.atahabaki.shamrocktoolbox.exec
+import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+
+    private val viewModel: ToggleGcamViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +32,22 @@ class HomeActivity : AppCompatActivity() {
                 add<QuickActionsFragment>(R.id.main_fragment_container)
             }
         }
+        viewModel.selectedGcamState.observe(this, Observer {
+            if (it) {
+                notify(R.string.gcam_status_enabled)
+            }
+            else {
+                notify(R.string.gcam_status_disabled)
+            }
+        })
+    }
+
+
+    private fun notify(@StringRes resId: Int) {
+        val contextView = binding.root
+        Snackbar.make(binding.root,resId, Snackbar.LENGTH_SHORT).setAction(R.string.reboot) {
+            exec("reboot", "${packageName}.notify.reboot")
+        }.setAnchorView(binding.mainBottomAppbar).show()
     }
 
     private fun initBottomNav() {
