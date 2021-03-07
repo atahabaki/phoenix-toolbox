@@ -54,18 +54,9 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
 
     fun disableGcam(prop: String) {
         execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
-        notify(R.string.gcam_status_disabled,R.string.reboot)
     }
 
     fun enableGcam(prop: String) {
         execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
-        notify(R.string.gcam_status_enabled,R.string.reboot)
-    }
-
-    fun notify(@StringRes resId: Int, @StringRes actionId: Int) {
-        val contextView = binding.root
-        Snackbar.make(binding.root,resId,Snackbar.LENGTH_SHORT).setAction(actionId) {
-            exec("reboot", "${activity?.packageName}.notify.reboot")
-        }.setAnchorView(R.id.main_bottom_appbar).show()
     }
 }
