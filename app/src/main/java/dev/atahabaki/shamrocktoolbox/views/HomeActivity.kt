@@ -38,7 +38,7 @@ class HomeActivity : AppCompatActivity() {
         val contextView = binding.root
         Snackbar.make(binding.root,resId, Snackbar.LENGTH_SHORT).setAction(actionId) {
             exec("reboot", "${packageName}.notify.reboot")
-        }.setAnchorView(R.id.main_bottom_appbar).show()
+        }.setAnchorView(binding.mainBottomAppbar).show()
     }
 
     private fun initBottomNav() {
