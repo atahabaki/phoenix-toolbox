@@ -88,8 +88,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun dismissWhenClickToFramerListener() {
         binding.mainFramer.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            dismissMainNavView()
         }
+    }
+
+    private fun dismissMainNavView() {
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun initView() {
