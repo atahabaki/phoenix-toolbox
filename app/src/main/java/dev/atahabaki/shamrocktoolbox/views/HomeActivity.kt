@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.annotation.StringRes
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
+import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
@@ -31,6 +32,9 @@ class HomeActivity : AppCompatActivity() {
                 add<QuickActionsFragment>(R.id.main_fragment_container)
             }
         }
+        viewModel.selectedGcamState.observe(this, Observer {
+
+        })
     }
 
 
