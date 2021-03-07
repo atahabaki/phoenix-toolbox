@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.ui
+package dev.atahabaki.shamrocktoolbox.views
 
 import android.os.Bundle
 import android.util.Log

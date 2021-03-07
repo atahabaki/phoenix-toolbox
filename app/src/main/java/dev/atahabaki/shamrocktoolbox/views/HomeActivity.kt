@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox
+package dev.atahabaki.shamrocktoolbox.views
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,8 +6,8 @@ import android.widget.FrameLayout
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
-import dev.atahabaki.shamrocktoolbox.ui.QuickActionsFragment
 
 class HomeActivity : AppCompatActivity() {
 
