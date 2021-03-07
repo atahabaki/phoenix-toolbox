@@ -1,5 +1,7 @@
 package dev.atahabaki.shamrocktoolbox.views
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
@@ -40,8 +42,40 @@ class HomeActivity : AppCompatActivity() {
                 notify(R.string.gcam_status_disabled)
             }
         })
+        binding.mainNavigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.main_menu_home -> {
+                    dismissMainNavView()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.main_menu_coffee -> {
+                    dismissMainNavView()
+                    gotoBuyMeACoffee()
+                    return@setNavigationItemSelectedListener true
+                }
+                R.id.main_menu_send_feedback -> {
+                    dismissMainNavView()
+                    gotoIssues()
+                    return@setNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
     }
 
+    private fun gotoBuyMeACoffee() {
+        goto("https://buymeacoffee.com/atahabaki")
+    }
+
+    private fun gotoIssues() {
+        goto("https://github.com/atahabaki/shamrock-toolbox/issues")
+    }
+
+    private fun goto(url: String) {
+        val i: Intent = Intent(Intent.ACTION_VIEW)
+        i.setData(Uri.parse(url))
+        startActivity(i)
+    }
 
     private fun notify(@StringRes resId: Int) {
         val contextView = binding.root
@@ -67,8 +101,12 @@ class HomeActivity : AppCompatActivity() {
 
     private fun dismissWhenClickToFramerListener() {
         binding.mainFramer.setOnClickListener {
-            bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+            dismissMainNavView()
         }
+    }
+
+    private fun dismissMainNavView() {
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
     }
 
     private fun initView() {
