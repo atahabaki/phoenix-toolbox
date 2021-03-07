@@ -63,6 +63,19 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun gotoBuyMeACoffee() {
+        goto("https://buymeacoffee.com/atahabaki")
+    }
+
+    private fun gotoIssues() {
+        goto("https://github.com/atahabaki/shamrock-toolbox/issues")
+    }
+
+    private fun goto(url: String) {
+        val i: Intent = Intent(Intent.ACTION_VIEW)
+        i.setData(Uri.parse(url))
+        startActivity(i)
+    }
 
     private fun notify(@StringRes resId: Int) {
         val contextView = binding.root
