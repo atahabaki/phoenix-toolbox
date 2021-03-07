@@ -33,7 +33,12 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         viewModel.selectedGcamState.observe(this, Observer {
-
+            if (it) {
+                notify(R.string.gcam_status_enabled)
+            }
+            else {
+                notify(R.string.gcam_status_disabled)
+            }
         })
     }
 
