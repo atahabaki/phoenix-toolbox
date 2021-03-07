@@ -3,16 +3,20 @@ package dev.atahabaki.shamrocktoolbox.views
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.FrameLayout
+import androidx.activity.viewModels
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
+import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
+
+    private val viewModel: ToggleGcamViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
