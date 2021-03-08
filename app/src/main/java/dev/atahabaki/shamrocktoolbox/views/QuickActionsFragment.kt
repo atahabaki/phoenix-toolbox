@@ -20,6 +20,7 @@ import java.io.InputStreamReader
 class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     private var _binding: FragmentQuickActionsBinding? = null
     private val binding get() = _binding!!
+    private val prop = "persist.camera.HAL3.enabled"
 
     private val viewModel: ToggleGcamViewModel by activityViewModels()
 
@@ -39,29 +40,32 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         }
     }
 
-    fun toggleGcam() {
-        val prop = "persist.camera.HAL3.enabled"
+    private fun getGcamStatus(): Boolean {
         try {
             val p = java.lang.Runtime.getRuntime().exec("getprop $prop")
             p.waitFor()
             val stdOut = BufferedReader(InputStreamReader(p.inputStream))
-            val line = stdOut.readLine()
-            if (line.trim() == "1") {
-                disableGcam(prop)
-            } else {
-                enableGcam(prop)
-            }
+            val line = stdOut.readLine().trim()
+            return line == "1"
         } catch (e: Exception) {
             Log.d("${activity?.packageName}.toggleGcam", "${e.message}")
         }
     }
 
-    fun disableGcam(prop: String) {
+    fun toggleGcam() {
+        if (getGcamStatus()) {
+            disableGcam(prop)
+        } else {
+            enableGcam(prop)
+        }
+    }
+
+    fun disableGcam() {
         execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
         viewModel.selectGcamState(false)
     }
 
-    fun enableGcam(prop: String) {
+    fun enableGcam() {
         execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
         viewModel.selectGcamState(true)
     }
