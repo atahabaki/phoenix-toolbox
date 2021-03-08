@@ -32,9 +32,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.quickAccessToggleGcam.setOnClickListener {
-            toggleGcam()
-        }
+        binding.quickAccessToggleGcam.isChecked = getGcamStatus()
     }
 
     private fun getGcamStatus(): Boolean {
@@ -47,6 +45,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         } catch (e: Exception) {
             Log.d("${activity?.packageName}.toggleGcam", "${e.message}")
         }
+        return false
     }
 
     fun toggleGcam() {
