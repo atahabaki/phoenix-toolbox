@@ -35,10 +35,10 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         binding.quickAccessToggleGcam.isChecked = getGcamStatus()
         binding.quickAccessToggleGcam.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
-                disableGcam()
+                enableGcam()
             }
             else {
-                enableGcam()
+                disableGcam()
             }
         }
     }
