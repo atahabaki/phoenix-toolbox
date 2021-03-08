@@ -5,13 +5,10 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
-import dev.atahabaki.shamrocktoolbox.exec
 import dev.atahabaki.shamrocktoolbox.execRoot
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 import java.io.BufferedReader
@@ -20,6 +17,7 @@ import java.io.InputStreamReader
 class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     private var _binding: FragmentQuickActionsBinding? = null
     private val binding get() = _binding!!
+    private val gcamProp = "persist.camera.HAL3.enabled"
 
     private val viewModel: ToggleGcamViewModel by activityViewModels()
 
@@ -34,35 +32,39 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.quickAccessToggleGcam.setOnClickListener {
-            toggleGcam()
+        binding.quickAccessToggleGcam.isChecked = getGcamStatus()
+        binding.quickAccessToggleGcam.setOnCheckedChangeListener { buttonView, isChecked -> toggleGcam(isChecked)}
+    }
+
+    private fun toggleGcam(isChecked: Boolean) {
+        if (isChecked) {
+            enableGcam()
+        }
+        else {
+            disableGcam()
         }
     }
 
-    fun toggleGcam() {
-        val prop = "persist.camera.HAL3.enabled"
+    private fun getGcamStatus(): Boolean {
         try {
-            val p = java.lang.Runtime.getRuntime().exec("getprop $prop")
+            val p = java.lang.Runtime.getRuntime().exec("getprop $gcamProp")
             p.waitFor()
             val stdOut = BufferedReader(InputStreamReader(p.inputStream))
-            val line = stdOut.readLine()
-            if (line.trim() == "1") {
-                disableGcam(prop)
-            } else {
-                enableGcam(prop)
-            }
+            val line = stdOut.readLine().trim()
+            return line == "1"
         } catch (e: Exception) {
             Log.d("${activity?.packageName}.toggleGcam", "${e.message}")
         }
+        return false
     }
 
-    fun disableGcam(prop: String) {
-        execRoot("setprop $prop 0", "${activity?.packageName}.setProp")
+    private fun disableGcam() {
+        execRoot("setprop $gcamProp 0", "${activity?.packageName}.setProp")
         viewModel.selectGcamState(false)
     }
 
-    fun enableGcam(prop: String) {
-        execRoot("setprop $prop 1", "${activity?.packageName}.setProp")
+    private fun enableGcam() {
+        execRoot("setprop $gcamProp 1", "${activity?.packageName}.setProp")
         viewModel.selectGcamState(true)
     }
 }
