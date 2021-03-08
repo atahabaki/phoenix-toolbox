@@ -56,14 +56,6 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         return false
     }
 
-    fun toggleGcam() {
-        if (getGcamStatus()) {
-            disableGcam()
-        } else {
-            enableGcam()
-        }
-    }
-
     fun disableGcam() {
         execRoot("setprop $gcamProp 0", "${activity?.packageName}.setProp")
         viewModel.selectGcamState(false)
