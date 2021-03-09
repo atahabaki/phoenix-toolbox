@@ -16,6 +16,8 @@
         <item name="snackbarStyle">@style/Theme.ShamrockToolbox.Snackbar</item>
         <item name="snackbarButtonStyle">@style/Theme.ShamrockToolbox.SnackbarButton</item>
         <item name="snackbarTextViewStyle">@style/Theme.ShamrockToolbox.SnackbarTextView</item>
+        <!-- BottomAppBar -->
+        <item name="bottomAppBarStyle">@style/Theme.ShamrockToolbox.BottomAppBar</item>
     </style>
 
     <style name="Theme.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
@@ -33,5 +35,15 @@
 
     <style name="ThemeOverlay.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
         <item name="colorOnSurface">@color/primaryTextColor</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.ShamrockToolbox.BottomAppBar</item>
+    </style>
+
+    <style name="ThemeOverlay.ShamrockToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="colorPrimary">@color/primaryColor</item>
+        <item name="colorOnSurface">@color/primaryTextColor</item>
+        <item name="colorSurface">@color/primaryTextColor</item>
     </style>
 </resources>
