@@ -13,5 +13,25 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <item name="android:colorBackground">?attr/colorOnPrimary</item>
         <!-- Customize your theme here. -->
+        <item name="snackbarStyle">@style/Theme.ShamrockToolbox.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Theme.ShamrockToolbox.SnackbarButton</item>
+        <item name="snackbarTextViewStyle">@style/Theme.ShamrockToolbox.SnackbarTextView</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.ShamrockToolbox.Snackbar</item>
+        <item name="actionTextColorAlpha">1</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.SnackbarTextView" parent="Widget.MaterialComponents.Snackbar.TextView">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.SnackbarButton" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
+
+    <style name="ThemeOverlay.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="colorOnSurface">@color/primaryTextColor</item>
     </style>
 </resources>
