@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Shamrock Alet Çantası</string>
     <string name="by_author">\@atahabaki tarafından</string>
-    <string name="quick_actions">Hızlı İşlemler</string>
+    <string name="quick_actions">Hızlı işlemler</string>
     <string name="coffee">Bi\' kahve ısmarla</string>
     <string name="send_feedback">Geri bildirim gönder</string>
     <string name="toggle_gcam">Gcam</string>
