@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Shamrock Toolbox</string>
     <string name="by_author">by @atahabaki</string>
-    <string name="quick_actions">Quick Actions</string>
+    <string name="quick_actions">Quick actions</string>
     <string name="coffee">Buy me a coffee</string>
     <string name="send_feedback">Send feedback</string>
     <string name="toggle_gcam">Gcam</string>
