@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Shamrock Alet Çantası</string>
+    <string name="by_author"><b>\@atahabaki</b> tarafından</string>
+    <string name="quick_actions">Hızlı işlemler</string>
+    <string name="coffee">Bi\' kahve ısmarla</string>
+    <string name="send_feedback">Geri bildirim gönder</string>
+    <string name="toggle_gcam">Gcam</string>
+    <string name="reboot">Yeniden Başlat</string>
+    <string name="gcam_status_disabled">Gcam kapatıldı.</string>
+    <string name="gcam_status_enabled">Gcam açıldı.</string>
+</resources>
