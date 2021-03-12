@@ -1,4 +1,6 @@
 package dev.atahabaki.shamrocktoolbox.widgets
 
-class GcamWidgetProvider {
+import android.appwidget.AppWidgetProvider
+
+class GcamWidgetProvider : AppWidgetProvider() {
 }
