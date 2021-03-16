@@ -44,9 +44,11 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
-        if (getGcamStatus(context)) {
-           disableGcam(context)
-        } else enableGcam(context)
+        if (intent?.action.equals(REFRESH_ACTION)) {
+            if (getGcamStatus(context)) {
+                disableGcam(context)
+            } else enableGcam(context)
+        }
     }
 
     private fun getGcamStatus(context: Context?): Boolean {
