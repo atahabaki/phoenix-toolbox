@@ -5,7 +5,6 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.util.Log
 import android.widget.RemoteViews
 import dev.atahabaki.shamrocktoolbox.R
@@ -41,6 +40,13 @@ class GcamWidgetProvider : AppWidgetProvider() {
         val intent: Intent = Intent(context, GcamWidgetProvider::class.java)
         intent.action = REFRESH_ACTION
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+    }
+
+    override fun onReceive(context: Context?, intent: Intent?) {
+        super.onReceive(context, intent)
+        if (getGcamStatus(context)) {
+           disableGcam(context)
+        } else enableGcam(context)
     }
 
     private fun getGcamStatus(context: Context?): Boolean {
