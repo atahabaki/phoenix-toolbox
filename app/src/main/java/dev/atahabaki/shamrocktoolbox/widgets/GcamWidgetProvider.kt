@@ -16,6 +16,7 @@ import java.io.InputStreamReader
 class GcamWidgetProvider : AppWidgetProvider() {
 
     private val gcamProp = "persist.camera.HAL3.enabled"
+    private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
 
     override fun onUpdate(
         context: Context?,
@@ -37,6 +38,12 @@ class GcamWidgetProvider : AppWidgetProvider() {
             }
             appWidgetManager?.updateAppWidget(it,views)
         }
+    }
+
+    private fun selfPendingIntent(context: Context?) : PendingIntent {
+        val intent: Intent = Intent(context, GcamWidgetProvider::class.java)
+        intent.action = REFRESH_ACTION
+        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
     private fun getGcamStatus(context: Context?): Boolean {
