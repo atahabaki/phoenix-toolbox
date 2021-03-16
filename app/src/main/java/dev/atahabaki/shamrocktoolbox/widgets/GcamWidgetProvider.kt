@@ -3,6 +3,7 @@ package dev.atahabaki.shamrocktoolbox.widgets
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.util.Log
@@ -22,10 +23,14 @@ class GcamWidgetProvider : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager?,
         appWidgetIds: IntArray?
     ) {
+        updateWidgets(context, appWidgetManager, appWidgetIds)
+    }
+
+    private fun updateWidgets(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
         appWidgetIds?.forEach {
             val views: RemoteViews = RemoteViews(
-                context?.packageName,
-                R.layout.widget_gcam
+                    context?.packageName,
+                    R.layout.widget_gcam
             ).apply {
                 setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context))
                 updateWidgetContent(context, this)
