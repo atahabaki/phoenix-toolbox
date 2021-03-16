@@ -60,11 +60,15 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
 
     private fun disableGcam() {
         execRoot("setprop $gcamProp 0", "${activity?.packageName}.setProp")
-        viewModel.selectGcamState(false)
+        val status = getGcamStatus()
+        if (!status) viewModel.selectGcamState(false)
+        binding.quickAccessToggleGcam.isChecked = status
     }
 
     private fun enableGcam() {
         execRoot("setprop $gcamProp 1", "${activity?.packageName}.setProp")
-        viewModel.selectGcamState(true)
+        val status = getGcamStatus()
+        if (status) viewModel.selectGcamState(true)
+        binding.quickAccessToggleGcam.isChecked = status
     }
 }
