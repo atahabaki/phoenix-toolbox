@@ -17,6 +17,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     private val gcamProp = "persist.camera.HAL3.enabled"
     private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
+    private val RELOAD_ACTION = "dev.atahabaki.shamrocktoolbox.appwidget.HOTRELOAD"
 
     override fun onUpdate(
         context: Context?,
@@ -32,7 +33,8 @@ class GcamWidgetProvider : AppWidgetProvider() {
                     context?.packageName,
                     R.layout.widget_gcam
             ).apply {
-                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context))
+                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, REFRESH_ACTION))
+                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, RELOAD_ACTION))
                 updateWidgetContent(context, this)
             }
             appWidgetManager?.updateAppWidget(it,views)
@@ -47,9 +49,9 @@ class GcamWidgetProvider : AppWidgetProvider() {
         }
     }
 
-    private fun selfPendingIntent(context: Context?) : PendingIntent {
+    private fun selfPendingIntent(context: Context?, action: String) : PendingIntent {
         val intent: Intent = Intent(context, GcamWidgetProvider::class.java)
-        intent.action = REFRESH_ACTION
+        intent.action = action
         return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
