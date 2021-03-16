@@ -65,6 +65,11 @@ class GcamWidgetProvider : AppWidgetProvider() {
             val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
             updateWidgets(context, appWidgetManager, appWidgetIds)
         }
+        else if (intent?.action.equals(RELOAD_ACTION)) {
+            val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context!!)
+            val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
+            updateWidgets(context, appWidgetManager, appWidgetIds)
+        }
     }
 
     private fun getGcamStatus(context: Context?): Boolean {
