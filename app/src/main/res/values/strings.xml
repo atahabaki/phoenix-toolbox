@@ -7,7 +7,6 @@
     <string name="toggle_gcam">Gcam</string>
     <string name="enable_gcam">ENABLE GCAM</string>
     <string name="disable_gcam">DISABLE GCAM</string>
-    <string name="reload">RELOAD</string>
     <string name="reboot">Reboot</string>
     <string name="gcam_status_disabled">Gcam is disabled.</string>
     <string name="gcam_status_enabled">Gcam is enabled.</string>
