@@ -24,14 +24,11 @@ class GcamWidgetProvider : AppWidgetProvider() {
         appWidgetIds: IntArray?
     ) {
         appWidgetIds?.forEach {
-            val pendingIntent: PendingIntent = Intent(context, GcamWidgetProvider::class.java).let {
-                PendingIntent.getActivity(context, 0, it, 0)
-            }
             val views: RemoteViews = RemoteViews(
                 context?.packageName,
                 R.layout.widget_gcam
             ).apply {
-                setOnClickPendingIntent(R.id.gcam_widget_status_changer, pendingIntent)
+                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context))
                 if (getGcamStatus(context)) {
                     setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_on))
                 } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_off))
