@@ -5,6 +5,7 @@ import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
+import android.graphics.Color
 import android.util.Log
 import android.widget.RemoteViews
 import dev.atahabaki.shamrocktoolbox.R
@@ -29,7 +30,9 @@ class GcamWidgetProvider : AppWidgetProvider() {
                 context?.packageName,
                 R.layout.widget_gcam
             ).apply {
+                setOnClickPendingIntent(R.id.gcam_widget_status_changer, pendingIntent)
             }
+            appWidgetManager?.updateAppWidget(it,views)
         }
     }
 
