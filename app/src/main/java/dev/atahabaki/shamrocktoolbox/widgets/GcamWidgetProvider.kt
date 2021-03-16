@@ -31,6 +31,9 @@ class GcamWidgetProvider : AppWidgetProvider() {
                 R.layout.widget_gcam
             ).apply {
                 setOnClickPendingIntent(R.id.gcam_widget_status_changer, pendingIntent)
+                if (getGcamStatus(context)) {
+                    setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_on))
+                } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_off))
             }
             appWidgetManager?.updateAppWidget(it,views)
         }
