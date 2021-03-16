@@ -4,6 +4,12 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
     <Button
+        android:id="@+id/gcam_widget_reloader"
+        android:layout_gravity="center"
+        android:text="@string/reload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <Button
         android:id="@+id/gcam_widget_status_changer"
         android:layout_gravity="center"
         android:text="@string/gcam_off"
