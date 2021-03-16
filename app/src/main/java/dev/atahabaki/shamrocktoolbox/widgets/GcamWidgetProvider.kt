@@ -28,11 +28,17 @@ class GcamWidgetProvider : AppWidgetProvider() {
                 R.layout.widget_gcam
             ).apply {
                 setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context))
-                if (getGcamStatus(context)) {
-                    setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_on))
-                } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_off))
+                updateWidgetContent(context, this)
             }
             appWidgetManager?.updateAppWidget(it,views)
+        }
+    }
+
+    private fun updateWidgetContent(context: Context?, remoteViews: RemoteViews) {
+        remoteViews.apply {
+            if (getGcamStatus(context)) {
+                setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_on))
+            } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_off))
         }
     }
 
