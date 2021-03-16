@@ -2,17 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <Button
+    android:orientation="horizontal"
+    android:gravity="center">
+    <ImageButton
         android:id="@+id/gcam_widget_reloader"
-        android:layout_gravity="center"
-        android:text="@string/reload"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:src="@drawable/ic_reload"
+        android:background="@color/primaryTextColor"
+        android:tint="@color/primaryColor"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
     <Button
         android:id="@+id/gcam_widget_status_changer"
         android:layout_gravity="center"
         android:text="@string/gcam_off"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:background="@color/primaryColor"
+        android:textColor="@color/primaryTextColor"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"/>
 </LinearLayout>
