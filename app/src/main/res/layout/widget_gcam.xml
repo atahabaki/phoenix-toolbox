@@ -3,14 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/gcam_widget_imager"
-        android:src="@drawable/ic_gcam"
+    <Button
+        android:id="@+id/gcam_widget_status_changer"
+        android:layout_gravity="center"
+        android:text="@string/gcam_off"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"/>
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/gcam_widget_status"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
 </LinearLayout>
