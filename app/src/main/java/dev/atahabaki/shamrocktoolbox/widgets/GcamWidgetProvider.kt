@@ -59,6 +59,9 @@ class GcamWidgetProvider : AppWidgetProvider() {
             if (getGcamStatus(context)) {
                 disableGcam(context)
             } else enableGcam(context)
+            val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context!!)
+            val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
+            updateWidgets(context, appWidgetManager, appWidgetIds)
         }
     }
 
