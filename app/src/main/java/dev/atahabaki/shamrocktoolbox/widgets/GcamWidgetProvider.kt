@@ -56,19 +56,20 @@ class GcamWidgetProvider : AppWidgetProvider() {
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
+        fun update() {
+            val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context!!)
+            val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
+            updateWidgets(context, appWidgetManager, appWidgetIds)
+        }
         super.onReceive(context, intent)
         if (intent?.action.equals(REFRESH_ACTION)) {
             if (getGcamStatus(context)) {
                 disableGcam(context)
             } else enableGcam(context)
-            val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context!!)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
-            updateWidgets(context, appWidgetManager, appWidgetIds)
+            update()
         }
         else if (intent?.action.equals(RELOAD_ACTION)) {
-            val appWidgetManager: AppWidgetManager = AppWidgetManager.getInstance(context!!)
-            val appWidgetIds = appWidgetManager.getAppWidgetIds(ComponentName(context, GcamWidgetProvider::class.java))
-            updateWidgets(context, appWidgetManager, appWidgetIds)
+            update()
         }
     }
 
