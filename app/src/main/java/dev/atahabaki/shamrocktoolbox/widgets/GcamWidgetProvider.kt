@@ -44,8 +44,8 @@ class GcamWidgetProvider : AppWidgetProvider() {
     private fun updateWidgetContent(context: Context?, remoteViews: RemoteViews) {
         remoteViews.apply {
             if (getGcamStatus(context)) {
-                setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_on))
-            } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.gcam_off))
+                setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.disable_gcam))
+            } else setTextViewText(R.id.gcam_widget_status_changer, context?.getString(R.string.enable_gcam))
         }
     }
 
