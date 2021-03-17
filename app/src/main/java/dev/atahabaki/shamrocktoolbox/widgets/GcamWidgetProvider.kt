@@ -62,7 +62,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
             updateWidgets(context, appWidgetManager, appWidgetIds)
         }
         super.onReceive(context, intent)
-        if (intent?.action.equals(REFRESH_ACTION)) {
+        if (intent?.action.equals(TOGGLE_ACTION)) {
             if (getGcamStatus(context)) {
                 disableGcam(context)
             } else enableGcam(context)
