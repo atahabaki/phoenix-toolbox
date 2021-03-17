@@ -17,7 +17,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     private val gcamProp = "persist.camera.HAL3.enabled"
     private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
-    private val RELOAD_ACTION = "dev.atahabaki.shamrocktoolbox.appwidget.HOTRELOAD"
+    private val TOGGLE_ACTION= "dev.atahabaki.shamrocktoolbox.appwidget.TOGGLE_ACTION"
 
     override fun onUpdate(
         context: Context?,
