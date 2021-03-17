@@ -33,8 +33,8 @@ class GcamWidgetProvider : AppWidgetProvider() {
                     context?.packageName,
                     R.layout.widget_gcam
             ).apply {
-                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, REFRESH_ACTION))
-                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, RELOAD_ACTION))
+                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, TOGGLE_ACTION))
+                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, REFRESH_ACTION))
                 updateWidgetContent(context, this)
             }
             appWidgetManager?.updateAppWidget(it,views)
