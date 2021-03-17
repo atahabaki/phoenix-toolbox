@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Boîte à outils Shamrock</string>
+    <string name="by_author">par <b>@atahabaki</b></string>
+    <string name="quick_actions">Actions rapides</string>
+    <string name="coffee">Achetez-moi un café</string>
+    <string name="send_feedback">Envoyer des commentaires</string>
+    <string name="toggle_gcam">Gcam</string>
+    <string name="enable_gcam">ACTIVER GCAM</string>
+    <string name="disable_gcam">DÉSACTIVER GCAM</string>
+    <string name="reboot">Redémarrer</string>
+    <string name="gcam_status_disabled">Gcam est désactivé.</string>
+    <string name="gcam_status_enabled">Gcam est activé.</string>
+</resources>
