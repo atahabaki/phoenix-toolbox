@@ -17,7 +17,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     private val gcamProp = "persist.camera.HAL3.enabled"
     private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
-    private val RELOAD_ACTION = "dev.atahabaki.shamrocktoolbox.appwidget.HOTRELOAD"
+    private val TOGGLE_ACTION= "dev.atahabaki.shamrocktoolbox.appwidget.TOGGLE_ACTION"
 
     override fun onUpdate(
         context: Context?,
@@ -33,8 +33,8 @@ class GcamWidgetProvider : AppWidgetProvider() {
                     context?.packageName,
                     R.layout.widget_gcam
             ).apply {
-                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, REFRESH_ACTION))
-                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, RELOAD_ACTION))
+                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, TOGGLE_ACTION))
+                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, REFRESH_ACTION))
                 updateWidgetContent(context, this)
             }
             appWidgetManager?.updateAppWidget(it,views)
@@ -62,13 +62,13 @@ class GcamWidgetProvider : AppWidgetProvider() {
             updateWidgets(context, appWidgetManager, appWidgetIds)
         }
         super.onReceive(context, intent)
-        if (intent?.action.equals(REFRESH_ACTION)) {
+        if (intent?.action.equals(TOGGLE_ACTION)) {
             if (getGcamStatus(context)) {
                 disableGcam(context)
             } else enableGcam(context)
             update()
         }
-        else if (intent?.action.equals(RELOAD_ACTION)) {
+        else if (intent?.action.equals(REFRESH_ACTION)) {
             update()
         }
     }
