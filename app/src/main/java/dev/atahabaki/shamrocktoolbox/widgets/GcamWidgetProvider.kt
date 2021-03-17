@@ -68,7 +68,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
             } else enableGcam(context)
             update()
         }
-        else if (intent?.action.equals(RELOAD_ACTION)) {
+        else if (intent?.action.equals(REFRESH_ACTION)) {
             update()
         }
     }
