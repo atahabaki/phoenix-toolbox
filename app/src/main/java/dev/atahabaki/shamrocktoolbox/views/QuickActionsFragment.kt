@@ -10,6 +10,7 @@ import androidx.fragment.app.activityViewModels
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
 import dev.atahabaki.shamrocktoolbox.execRoot
+import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
@@ -20,6 +21,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     private val gcamProp = "persist.camera.HAL3.enabled"
 
     private val viewModel: ToggleGcamViewModel by activityViewModels()
+    private val fabViewModel: FabStateViewModel by activityViewModels()
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -32,6 +34,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        fabViewModel.setVisibility(false)
         binding.quickAccessToggleGcam.isChecked = getGcamStatus()
         binding.quickAccessToggleGcam.setOnCheckedChangeListener { _, isChecked -> toggleGcam(isChecked)}
     }
