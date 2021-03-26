@@ -10,4 +10,5 @@
     <string name="reboot">Reboot</string>
     <string name="gcam_status_disabled">Gcam is disabled.</string>
     <string name="gcam_status_enabled">Gcam is enabled.</string>
+    <string name="add_recovery_entry">Add Recovery Command</string>
 </resources>
