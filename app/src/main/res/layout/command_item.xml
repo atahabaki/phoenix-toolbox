@@ -6,18 +6,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="20dp">
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/command_text"
+        android:id="@+id/command_parameter"
         style="@style/TextAppearance.MaterialComponents.Body1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@id/command_parameter"
-        app:layout_constraintStart_toEndOf="@id/command_parameter"
-        app:layout_constraintTop_toTopOf="@id/command_parameter"
+        app:layout_constraintBottom_toBottomOf="@id/command_text"
+        app:layout_constraintStart_toEndOf="@id/command_text"
+        app:layout_constraintTop_toTopOf="@id/command_text"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
         tools:text="/sdcard/flash.zip" />
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/command_parameter"
+        android:id="@+id/command_text"
         style="@style/TextAppearance.MaterialComponents.Headline6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
