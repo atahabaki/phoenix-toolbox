@@ -43,6 +43,7 @@ class RecoveryCommandDialog: DialogFragment() {
                     Log.d("shamrock.cmd", "PARAM: $parameter")
                     //TODO change Command's parameter to String, it's not effective List<String>
                     cmdViewModel.addCommand(Command(command, parameter))
+                    cmdViewModel.setDataChanged(true)
                 }
             })
             builder.setNegativeButton(R.string.cancel, DialogInterface.OnClickListener{ dialog, which ->
