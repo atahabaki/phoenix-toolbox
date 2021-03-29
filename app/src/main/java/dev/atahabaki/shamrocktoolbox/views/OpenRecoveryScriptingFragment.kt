@@ -13,6 +13,7 @@ import dev.atahabaki.shamrocktoolbox.adapters.RecoveryCommandsAdapter
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentOpenRecoveryBinding
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 
 class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
     private var _binding: FragmentOpenRecoveryBinding? = null
@@ -20,6 +21,7 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
 
     private val fabViewModel: FabStateViewModel by activityViewModels()
     private val recViewModel: RecoveryCommandViewModel by activityViewModels()
+    private val recMenuViewModel: RecoveryMenuStateViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -36,6 +38,7 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
         fabViewModel.setVisibility(true)
         binding.openRecoveryRecycler.layoutManager = LinearLayoutManager(activity)
         binding.openRecoveryRecycler.adapter = adapter
+        recMenuViewModel.setState(true)
         recViewModel.isChanged.observe(viewLifecycleOwner, Observer {
             if (it) {
                 adapter.notifyDataSetChanged()
