@@ -16,7 +16,9 @@ import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
 import dev.atahabaki.shamrocktoolbox.exec
+import dev.atahabaki.shamrocktoolbox.models.Command
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
+import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -26,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
 
     private val viewModel: ToggleGcamViewModel by viewModels()
     private val fabViewModel: FabStateViewModel by viewModels()
+    private val recViewModel: RecoveryCommandViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,6 +46,15 @@ class HomeActivity : AppCompatActivity() {
                 binding.mainFab.visibility = View.VISIBLE
             else binding.mainFab.visibility = View.GONE
         })
+        fabViewModel.isClicked.observe(this, Observer {
+            if (it) {
+                val recoveryCommandDialog = RecoveryCommandDialog()
+                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
+            }
+        })
+        binding.mainFab.setOnClickListener {
+            fabViewModel.setClickState(true)
+        }
         viewModel.selectedGcamState.observe(this, Observer {
             if (it) {
                 notify(R.string.gcam_status_enabled)
