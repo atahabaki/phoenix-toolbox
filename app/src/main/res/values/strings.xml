@@ -14,6 +14,9 @@
     <string name="recovery_menu">Automate Recovery</string>
     <string name="recovery_cmd_param_tooltip">Parameters</string>
     <string name="recovery_cmd">Command:</string>
+    <string name="dialog_new_command_title">New Command</string>
+    <string name="add_cmd">Add Command</string>
+    <string name="cancel">Cancel</string>
     <string-array name="recovery_cmd_types">
         <item>install</item>
         <item>wipe</item>
