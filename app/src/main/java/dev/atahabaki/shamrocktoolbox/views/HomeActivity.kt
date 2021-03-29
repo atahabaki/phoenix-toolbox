@@ -83,6 +83,14 @@ class HomeActivity : AppCompatActivity() {
                     }
                     return@setNavigationItemSelectedListener true
                 }
+                R.id.main_menu_recovery -> {
+                    dismissMainNavView()
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment())
+                    }
+                    true
+                }
                 R.id.main_menu_coffee -> {
                     dismissMainNavView()
                     gotoBuyMeACoffee()
