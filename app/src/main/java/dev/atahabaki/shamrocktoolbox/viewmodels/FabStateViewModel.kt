@@ -11,4 +11,11 @@ class FabStateViewModel(): ViewModel() {
     fun setVisibility(isVisible: Boolean) {
         _isVisible.value = isVisible
     }
+
+    private val _isClicked = MutableLiveData<Boolean>()
+    val isClicked: LiveData<Boolean> get() = _isClicked
+
+    fun setClickState(isClicked: Boolean) {
+        _isClicked.value = isClicked
+    }
 }
