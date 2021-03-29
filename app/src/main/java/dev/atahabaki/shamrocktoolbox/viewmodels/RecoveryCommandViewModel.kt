@@ -24,4 +24,11 @@ class RecoveryCommandViewModel: ViewModel() {
     fun removeCommand(index: Int) {
         mutableCommands.value?.removeAt(index)
     }
+
+    private val _isChanged = MutableLiveData<Boolean>()
+    val isChanged: LiveData<Boolean> get() = _isChanged
+
+    fun setDataChanged(changed: Boolean) {
+        _isChanged.value = changed
+    }
 }
