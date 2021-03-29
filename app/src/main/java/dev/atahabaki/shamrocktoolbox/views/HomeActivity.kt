@@ -19,6 +19,7 @@ import dev.atahabaki.shamrocktoolbox.exec
 import dev.atahabaki.shamrocktoolbox.models.Command
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -29,6 +30,7 @@ class HomeActivity : AppCompatActivity() {
     private val viewModel: ToggleGcamViewModel by viewModels()
     private val fabViewModel: FabStateViewModel by viewModels()
     private val recViewModel: RecoveryCommandViewModel by viewModels()
+    private val recMenuViewModel: RecoveryMenuStateViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -61,6 +63,14 @@ class HomeActivity : AppCompatActivity() {
             }
             else {
                 notify(R.string.gcam_status_disabled)
+            }
+        })
+        recMenuViewModel.isMenuActive.observe(this, Observer {
+            if (it) {
+                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
+            }
+            else {
+                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
             }
         })
         binding.mainNavigationView.setNavigationItemSelectedListener {
