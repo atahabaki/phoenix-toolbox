@@ -12,6 +12,8 @@
     <string name="gcam_status_enabled">Gcam is enabled.</string>
     <string name="add_recovery_entry">Add Recovery Command</string>
     <string name="recovery_menu">Automate Recovery</string>
+    <string name="recovery_cmd_param_tooltip">Parameters</string>
+    <string name="recovery_cmd">Command:</string>
     <string-array name="recovery_cmd_types">
         <item>install</item>
         <item>wipe</item>
