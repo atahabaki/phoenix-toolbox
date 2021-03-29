@@ -6,20 +6,22 @@ import androidx.lifecycle.ViewModel
 import dev.atahabaki.shamrocktoolbox.models.Command
 
 class RecoveryCommandViewModel: ViewModel() {
-    private val mutableCommands = MutableLiveData<List<Command>>()
-    val commands: LiveData<List<Command>> get() = mutableCommands
+    private val mutableCommands = MutableLiveData<MutableList<Command>>()
+    val commands: LiveData<MutableList<Command>> get() = mutableCommands
+
+    init {
+        mutableCommands.value = mutableListOf()
+    }
 
     fun addCommand(command: Command) {
-        commands.value!!.plus(command)
+        mutableCommands.value?.add(command)
     }
 
     fun delAllCommands() {
-        for (i in commands.value!!.indices) {
-            commands.value!!.drop(i)
-        }
+        mutableCommands.value?.clear()
     }
 
     fun removeCommand(index: Int) {
-        commands.value!!.drop(index)
+        mutableCommands.value?.removeAt(index)
     }
 }
