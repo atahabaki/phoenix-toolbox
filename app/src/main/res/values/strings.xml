@@ -17,6 +17,8 @@
     <string name="dialog_new_command_title">New Command</string>
     <string name="add_cmd">Add Command</string>
     <string name="cancel">Cancel</string>
+    <string name="clear_all">Clear All</string>
+    <string name="apply">Apply</string>
     <string-array name="recovery_cmd_types">
         <item>install</item>
         <item>wipe</item>
