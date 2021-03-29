@@ -19,6 +19,10 @@ class RecoveryCommandsAdapter(
         }
     }
 
+    fun setCommands(commands: List<Command>) {
+        this.commands = commands
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.command_item, parent, false)
         return ViewHolder(view)
