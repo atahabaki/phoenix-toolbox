@@ -7,7 +7,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.adapters.RecoveryCommandsAdapter
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentOpenRecoveryBinding
@@ -38,6 +40,16 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
         fabViewModel.setVisibility(true)
         binding.openRecoveryRecycler.layoutManager = LinearLayoutManager(activity)
         binding.openRecoveryRecycler.adapter = adapter
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+            override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                recViewModel.removeCommand(viewHolder.adapterPosition)
+                adapter.notifyDataSetChanged()
+            }
+        }).attachToRecyclerView(binding.openRecoveryRecycler)
         recMenuViewModel.setState(true)
         recViewModel.isChanged.observe(viewLifecycleOwner, Observer {
             if (it) {
