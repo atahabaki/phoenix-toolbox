@@ -12,10 +12,22 @@ class RecoveryCommandsAdapter(
     private var commands: List<Command>
 ): RecyclerView.Adapter<RecoveryCommandsAdapter.ViewHolder>() {
 
-    private fun gen_exp(command: Command): String {
+    private fun gen_exp(holder: ViewHolder, command: Command): String {
         return when (command.command.trim()) {
-            "install" -> "flashes the zip file located on your device at <b>${command.parameters}</b>"
-            else -> "I don't what this does, stay tuned..."
+            "install" -> holder.itemView.context.getString(R.string.rec_cmd_install_tip, command.parameters?.joinToString(" "))
+            "wipe" -> holder.itemView.context.getString(R.string.rec_cmd_wipe_tip, command.parameters?.joinToString(" "))
+            "format" -> holder.itemView.context.getString(R.string.rec_cmd_format_tip)
+            "backup" -> holder.itemView.context.getString(R.string.rec_cmd_backup_tip, command.parameters?.joinToString(" "))
+            "restore" -> holder.itemView.context.getString(R.string.rec_cmd_restore_tip, command.parameters?.joinToString(" "))
+            "remountrw" -> holder.itemView.context.getString(R.string.rec_cmd_remountrw_tip)
+            "mount" -> holder.itemView.context.getString(R.string.rec_cmd_mount_tip, command.parameters?.joinToString(" "))
+            "set" -> holder.itemView.context.getString(R.string.rec_cmd_set_tip)
+            "mkdir" -> holder.itemView.context.getString(R.string.rec_cmd_mkdir_tip, command.parameters?.joinToString(" "))
+            "reboot" -> holder.itemView.context.getString(R.string.rec_cmd_reboot_tip, command.parameters?.joinToString(" "))
+            "sideload" -> holder.itemView.context.getString(R.string.rec_cmd_sideload_tip)
+            "fixperms" -> holder.itemView.context.getString(R.string.rec_cmd_fixperms_tip)
+            "decrypt" -> holder.itemView.context.getString(R.string.rec_cmd_decrypt_tip, command.parameters?.joinToString(" "))
+            else -> holder.itemView.context.getString(R.string.dont_know)
         }
     }
 
@@ -32,7 +44,7 @@ class RecoveryCommandsAdapter(
         val currCommand = commands[position]
         holder.itemView.findViewById<MaterialTextView>(R.id.command_text).text = currCommand.command
         holder.itemView.findViewById<MaterialTextView>(R.id.command_parameter).text = currCommand.parameters?.joinToString(" ")
-        holder.itemView.findViewById<MaterialTextView>(R.id.command_exp).text = gen_exp(currCommand)
+        holder.itemView.findViewById<MaterialTextView>(R.id.command_exp).text = gen_exp(holder, currCommand)
     }
 
     override fun getItemCount(): Int {
