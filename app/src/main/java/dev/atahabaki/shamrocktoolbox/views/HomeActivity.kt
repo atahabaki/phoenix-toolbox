@@ -112,7 +112,10 @@ class HomeActivity : AppCompatActivity() {
                     val commands = recViewModel.commands.value!!
                     execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec")
                     for (command in commands.iterator()) {
-                        if (command.command == "install" && android.os.Build.DEVICE == "shamrock") {
+                        if (command.command == "install" && (
+                                android.os.Build.DEVICE == "shamrock" ||
+                                android.os.Build.DEVICE == "mido"
+                            )) {
                             execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.apply_rec")
                         }
                         else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
