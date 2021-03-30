@@ -20,7 +20,7 @@
     <string name="cancel">Iptal</string>
     <string name="clear_all">Hepsini Temizle</string>
     <string name="apply">Uygula</string>
-    <string name="rec_cmd_install_tip">Cihazınızdaki %1$s zip dosyasını kurar.</string>
+    <string name="rec_cmd_install_tip">Cihazınızdaki %1$s dosyasını kurar.</string>
     <string name="rec_cmd_wipe_tip">%1$s bölümünü temizler (wipe).</string>
     <string name="rec_cmd_format_tip">Data bölümünü formatlar.</string>
     <string name="rec_cmd_backup_tip">%1$s bölümünü/bölümlerini yedekler.</string>
@@ -28,7 +28,7 @@
     <string name="rec_cmd_remountrw_tip">/system bölümünü okuma-yazma ya da sadece-okuma modu arasında çevirir.</string>
     <string name="rec_cmd_mount_tip">%1$s bölümünü bağlar (mount).</string>
     <string name="rec_cmd_set_tip">Değişkene girilen değeri atar, değer girilmemişse değişkeni boşaltır (empties).</string>
-    <string name="rec_cmd_mkdir_tip">%1$s konumunda kalsör oluşturur.</string>
+    <string name="rec_cmd_mkdir_tip">%1$s konumunda klasör oluşturur.</string>
     <string name="rec_cmd_reboot_tip">%1$s modunda yeniden başlatır.</string>
     <string name="rec_cmd_sideload_tip">Sunucu adb\'deki zip dosyasını yan yük modunda (sideload) kurar.</string>
     <string name="rec_cmd_fixperms_tip">İzinleri düzelt betiğini (fix permissions script) başlatır.</string>
