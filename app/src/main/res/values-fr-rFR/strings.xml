@@ -33,5 +33,5 @@
     <string name="rec_cmd_sideload_tip">Charge le fichier zip à partir de l\'adb hôte.</string>
     <string name="rec_cmd_fixperms_tip">Lance le script des autorisations de correction.</string>
     <string name="rec_cmd_decrypt_tip">Déchiffre les données avec ce mot de passe %1$s</string>
-    <string name="dont_know">Je ne sais pas ce que ça fait...</string>
+    <string name="dont_know">Je ne sais pas ce que ça fait…</string>
 </resources>
