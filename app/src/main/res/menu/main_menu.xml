@@ -7,6 +7,11 @@
         app:showAsAction="never"
         android:title="@string/quick_actions"/>
     <item
+        android:id="@+id/main_menu_recovery"
+        android:icon="@drawable/ic_recovery"
+        app:showAsAction="never"
+        android:title="@string/recovery_menu"/>
+    <item
         android:id="@+id/main_menu_coffee"
         android:icon="@drawable/ic_coffee"
         app:showAsAction="ifRoom"

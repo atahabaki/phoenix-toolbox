@@ -10,4 +10,28 @@
     <string name="reboot">Reboot</string>
     <string name="gcam_status_disabled">Gcam is disabled.</string>
     <string name="gcam_status_enabled">Gcam is enabled.</string>
+    <string name="add_recovery_entry">Add Recovery Command</string>
+    <string name="recovery_menu">Automate Recovery</string>
+    <string name="recovery_cmd_param_tooltip">Parameters</string>
+    <string name="recovery_cmd">Command:</string>
+    <string name="dialog_new_command_title">New Command</string>
+    <string name="add_cmd">Add Command</string>
+    <string name="cancel">Cancel</string>
+    <string name="clear_all">Clear All</string>
+    <string name="apply">Apply</string>
+    <string-array name="recovery_cmd_types">
+        <item>install</item>
+        <item>wipe</item>
+        <item>format</item>
+        <item>backup</item>
+        <item>restore</item>
+        <item>remountrw</item>
+        <item>mount</item>
+        <item>set</item>
+        <item>mkdir</item>
+        <item>reboot</item>
+        <item>sideload</item>
+        <item>fixperms</item>
+        <item>decrypt</item>
+    </string-array>
 </resources>

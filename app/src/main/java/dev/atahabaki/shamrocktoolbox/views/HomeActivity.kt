@@ -4,6 +4,8 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
@@ -15,6 +17,11 @@ import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
 import dev.atahabaki.shamrocktoolbox.exec
+import dev.atahabaki.shamrocktoolbox.execRoot
+import dev.atahabaki.shamrocktoolbox.models.Command
+import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
+import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -23,6 +30,9 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<FrameLayout>
 
     private val viewModel: ToggleGcamViewModel by viewModels()
+    private val fabViewModel: FabStateViewModel by viewModels()
+    private val recViewModel: RecoveryCommandViewModel by viewModels()
+    private val recMenuViewModel: RecoveryMenuStateViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,8 +41,23 @@ class HomeActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                add<QuickActionsFragment>(R.id.main_fragment_container)
+                //add<QuickActionsFragment>(R.id.main_fragment_container)
+                add<OpenRecoveryScriptingFragment>(R.id.main_fragment_container)
             }
+        }
+        fabViewModel.isVisible.observe(this, Observer {
+            if (it)
+                binding.mainFab.visibility = View.VISIBLE
+            else binding.mainFab.visibility = View.GONE
+        })
+        fabViewModel.isClicked.observe(this, Observer {
+            if (it) {
+                val recoveryCommandDialog = RecoveryCommandDialog()
+                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
+            }
+        })
+        binding.mainFab.setOnClickListener {
+            fabViewModel.setClickState(true)
         }
         viewModel.selectedGcamState.observe(this, Observer {
             if (it) {
@@ -42,11 +67,31 @@ class HomeActivity : AppCompatActivity() {
                 notify(R.string.gcam_status_disabled)
             }
         })
+        recMenuViewModel.isMenuActive.observe(this, Observer {
+            if (it) {
+                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
+            }
+            else {
+                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
+            }
+        })
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_menu_home -> {
                     dismissMainNavView()
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.main_fragment_container, QuickActionsFragment())
+                    }
                     return@setNavigationItemSelectedListener true
+                }
+                R.id.main_menu_recovery -> {
+                    dismissMainNavView()
+                    supportFragmentManager.commit {
+                        setReorderingAllowed(true)
+                        replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment())
+                    }
+                    true
                 }
                 R.id.main_menu_coffee -> {
                     dismissMainNavView()
@@ -57,6 +102,26 @@ class HomeActivity : AppCompatActivity() {
                     dismissMainNavView()
                     gotoIssues()
                     return@setNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
+        binding.mainBottomAppbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_rec_cmd_apply -> {
+                    val commands = recViewModel.commands.value!!
+                    var all_commands = ""
+                    for (command in commands.iterator()) {
+                        all_commands += "$command.toString()\n"
+                    }
+                    Log.d("${packageName}.all_commands", all_commands)
+                    execRoot("echo $all_commands > /cache/recovery/command", "${packageName}.apply_rec");
+                    true
+                }
+                R.id.menu_rec_cmd_clear -> {
+                    recViewModel.delAllCommands()
+                    recViewModel.setDataChanged(true)
+                    true
                 }
                 else -> false
             }
@@ -95,6 +160,7 @@ class HomeActivity : AppCompatActivity() {
     private fun initBottomAppBarNavigationClick() {
         binding.mainBottomAppbar.setNavigationOnClickListener {
             bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
+            fabViewModel.setVisibility(false)
         }
     }
 
@@ -106,6 +172,7 @@ class HomeActivity : AppCompatActivity() {
 
     private fun dismissMainNavView() {
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        fabViewModel.setVisibility(true)
     }
 
     private fun initView() {
