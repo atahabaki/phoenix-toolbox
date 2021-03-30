@@ -11,4 +11,13 @@
     <string name="reboot">Redémarrer</string>
     <string name="gcam_status_disabled">Gcam est désactivé.</string>
     <string name="gcam_status_enabled">Gcam est activé.</string>
+    <string name="add_recovery_entry">Ajouter une commande de récupération</string>
+    <string name="recovery_menu">Automatisez la récupération</string>
+    <string name="recovery_cmd_param_tooltip">Paramètres</string>
+    <string name="recovery_cmd">Commander:</string>
+    <string name="dialog_new_command_title">Nouvelle Commande</string>
+    <string name="add_cmd">Ajouter Une Commande</string>
+    <string name="cancel">Annuler</string>
+    <string name="clear_all">Tout Effacer</string>
+    <string name="apply">Appliquer</string>
 </resources>
