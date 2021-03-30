@@ -11,4 +11,27 @@
     <string name="reboot">Yeniden Başlat</string>
     <string name="gcam_status_disabled">Gcam kapatıldı.</string>
     <string name="gcam_status_enabled">Gcam açıldı.</string>
+    <string name="add_recovery_entry">Kurtarma Komutu Ekle</string>
+    <string name="recovery_menu">Kurtarma otomasyonu</string>
+    <string name="recovery_cmd_param_tooltip">Parametreler</string>
+    <string name="recovery_cmd">Komut:</string>
+    <string name="dialog_new_command_title">Yeni Komut</string>
+    <string name="add_cmd">Komut Ekle</string>
+    <string name="cancel">Iptal</string>
+    <string name="clear_all">Hepsini Temizle</string>
+    <string name="apply">Uygula</string>
+    <string name="rec_cmd_install_tip">Cihazınızdaki %1$s dosyasını kurar.</string>
+    <string name="rec_cmd_wipe_tip">%1$s bölümünü temizler (wipe).</string>
+    <string name="rec_cmd_format_tip">Data bölümünü formatlar.</string>
+    <string name="rec_cmd_backup_tip">%1$s bölümünü/bölümlerini yedekler.</string>
+    <string name="rec_cmd_restore_tip">%1$s bölümünü/bölümlerini geri yükler.</string>
+    <string name="rec_cmd_remountrw_tip">/system bölümünü okuma-yazma ya da sadece-okuma modu arasında çevirir.</string>
+    <string name="rec_cmd_mount_tip">%1$s bölümünü bağlar (mount).</string>
+    <string name="rec_cmd_set_tip">Değişkene girilen değeri atar, değer girilmemişse değişkeni boşaltır (empties).</string>
+    <string name="rec_cmd_mkdir_tip">%1$s konumunda klasör oluşturur.</string>
+    <string name="rec_cmd_reboot_tip">%1$s modunda yeniden başlatır.</string>
+    <string name="rec_cmd_sideload_tip">Sunucu adb\'deki zip dosyasını yan yük modunda (sideload) kurar.</string>
+    <string name="rec_cmd_fixperms_tip">İzinleri düzelt betiğini (fix permissions script) başlatır.</string>
+    <string name="rec_cmd_decrypt_tip">Data bölümünü %1$s ile şifreler.</string>
+    <string name="dont_know">Bunun ne yaptığı hakkkında hiçbir fikrim yok…</string>
 </resources>

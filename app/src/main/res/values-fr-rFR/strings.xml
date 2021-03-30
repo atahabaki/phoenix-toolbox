@@ -11,4 +11,27 @@
     <string name="reboot">Redémarrer</string>
     <string name="gcam_status_disabled">Gcam est désactivé.</string>
     <string name="gcam_status_enabled">Gcam est activé.</string>
+    <string name="add_recovery_entry">Ajouter une commande de récupération</string>
+    <string name="recovery_menu">Automatisez la récupération</string>
+    <string name="recovery_cmd_param_tooltip">Paramètres</string>
+    <string name="recovery_cmd">Commander:</string>
+    <string name="dialog_new_command_title">Nouvelle Commande</string>
+    <string name="add_cmd">Ajouter Une Commande</string>
+    <string name="cancel">Annuler</string>
+    <string name="clear_all">Tout Effacer</string>
+    <string name="apply">Appliquer</string>
+    <string name="rec_cmd_install_tip">Installer le fichier zip situé à %1$s</string>
+    <string name="rec_cmd_wipe_tip">Effacer la partition nommée %1$s</string>
+    <string name="rec_cmd_format_tip">Formate la partition de données</string>
+    <string name="rec_cmd_backup_tip">Sauvegarde la/les partition(s) %1$s.</string>
+    <string name="rec_cmd_restore_tip">Restaure la/les partitions %1$s.</string>
+    <string name="rec_cmd_remountrw_tip">Rétablit le type de montage /system (lecture seule ou lecture-écriture).</string>
+    <string name="rec_cmd_mount_tip">Monte la/les partition(s) %1$s</string>
+    <string name="rec_cmd_set_tip">Définit la variable, si la valuer est vide, vide la variable.</string>
+    <string name="rec_cmd_mkdir_tip">Crée le répertoire situé à %1$s</string>
+    <string name="rec_cmd_reboot_tip">Redémarre en mode %1$s</string>
+    <string name="rec_cmd_sideload_tip">Charge le fichier zip à partir de l\'adb hôte.</string>
+    <string name="rec_cmd_fixperms_tip">Lance le script des autorisations de correction.</string>
+    <string name="rec_cmd_decrypt_tip">Déchiffre les données avec ce mot de passe %1$s</string>
+    <string name="dont_know">Je ne sais pas ce que ça fait…</string>
 </resources>

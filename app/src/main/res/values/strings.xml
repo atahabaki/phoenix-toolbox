@@ -11,7 +11,7 @@
     <string name="gcam_status_disabled">Gcam is disabled.</string>
     <string name="gcam_status_enabled">Gcam is enabled.</string>
     <string name="add_recovery_entry">Add Recovery Command</string>
-    <string name="recovery_menu">Automate Recovery</string>
+    <string name="recovery_menu">Automate recovery</string>
     <string name="recovery_cmd_param_tooltip">Parameters</string>
     <string name="recovery_cmd">Command:</string>
     <string name="dialog_new_command_title">New Command</string>
@@ -19,6 +19,20 @@
     <string name="cancel">Cancel</string>
     <string name="clear_all">Clear All</string>
     <string name="apply">Apply</string>
+    <string name="rec_cmd_install_tip">Flashes the zip file located on your device at %1$s</string>
+    <string name="rec_cmd_wipe_tip">Wipes %1$s partition.</string>
+    <string name="rec_cmd_format_tip">Formats data partition.</string>
+    <string name="rec_cmd_backup_tip">Backups %1$s partition(s).</string>
+    <string name="rec_cmd_restore_tip">Restores %1$s partition(s).</string>
+    <string name="rec_cmd_remountrw_tip">Reverts /system mount type (read-only/read-write).</string>
+    <string name="rec_cmd_mount_tip">Mounts %1$s</string>
+    <string name="rec_cmd_set_tip">Sets variable, if the value is empty, empties the variable.</string>
+    <string name="rec_cmd_mkdir_tip">Makes directory located at %1$s</string>
+    <string name="rec_cmd_reboot_tip">Reboots into %1$s mode.</string>
+    <string name="rec_cmd_sideload_tip">Sideloads the zip file from host adb.</string>
+    <string name="rec_cmd_fixperms_tip">Launches fix permissions script.</string>
+    <string name="rec_cmd_decrypt_tip">Decrypts data with this %1$s password.</string>
+    <string name="dont_know">I don\'t know what this does…</string>
     <string-array name="recovery_cmd_types">
         <item>install</item>
         <item>wipe</item>
