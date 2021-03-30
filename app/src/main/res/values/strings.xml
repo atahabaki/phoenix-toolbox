@@ -32,6 +32,7 @@
     <string name="rec_cmd_sideload_tip">Sideloads the zip file from host adb.</string>
     <string name="rec_cmd_fixperms_tip">Launches fix permissions script.</string>
     <string name="rec_cmd_decrypt_tip">Decrypts data with this %1$s password.</string>
+    <string name="dont_know">I don\'t know what this does...</string>
     <string-array name="recovery_cmd_types">
         <item>install</item>
         <item>wipe</item>
