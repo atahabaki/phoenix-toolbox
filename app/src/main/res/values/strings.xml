@@ -48,4 +48,5 @@
         <item>fixperms</item>
         <item>decrypt</item>
     </string-array>
+    <string name="rec_cmd_set_tip">Sets variable, if the value is empty, empties the variable.</string>
 </resources>
