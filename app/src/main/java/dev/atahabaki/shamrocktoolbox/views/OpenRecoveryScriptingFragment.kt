@@ -40,7 +40,7 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
         fabViewModel.setVisibility(true)
         binding.openRecoveryRecycler.layoutManager = LinearLayoutManager(activity)
         binding.openRecoveryRecycler.adapter = adapter
-        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+        ItemTouchHelper(object: ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
                 return false
             }
