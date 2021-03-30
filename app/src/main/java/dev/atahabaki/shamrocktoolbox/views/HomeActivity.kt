@@ -110,12 +110,11 @@ class HomeActivity : AppCompatActivity() {
             when(it.itemId) {
                 R.id.menu_rec_cmd_apply -> {
                     val commands = recViewModel.commands.value!!
-                    var all_commands = ""
+                    execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec");
                     for (command in commands.iterator()) {
-                        all_commands += "$command.toString()\n"
+                        execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec");
                     }
-                    Log.d("${packageName}.all_commands", all_commands)
-                    execRoot("echo $all_commands > /cache/recovery/command", "${packageName}.apply_rec");
+                    execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
                     true
                 }
                 R.id.menu_rec_cmd_clear -> {
