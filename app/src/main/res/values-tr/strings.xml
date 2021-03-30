@@ -12,7 +12,7 @@
     <string name="gcam_status_disabled">Gcam kapatıldı.</string>
     <string name="gcam_status_enabled">Gcam açıldı.</string>
     <string name="add_recovery_entry">Kurtarma Komutu Ekle</string>
-    <string name="recovery_menu">Kurtarma Otomasyonu</string>
+    <string name="recovery_menu">Kurtarma otomasyonu</string>
     <string name="recovery_cmd_param_tooltip">Parametreler</string>
     <string name="recovery_cmd">Komut:</string>
     <string name="dialog_new_command_title">Yeni Komut</string>
