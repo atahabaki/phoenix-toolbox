@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
@@ -16,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
 import dev.atahabaki.shamrocktoolbox.exec
+import dev.atahabaki.shamrocktoolbox.execRoot
 import dev.atahabaki.shamrocktoolbox.models.Command
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
@@ -100,6 +102,26 @@ class HomeActivity : AppCompatActivity() {
                     dismissMainNavView()
                     gotoIssues()
                     return@setNavigationItemSelectedListener true
+                }
+                else -> false
+            }
+        }
+        binding.mainBottomAppbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_rec_cmd_apply -> {
+                    val commands = recViewModel.commands.value!!
+                    var all_commands = ""
+                    for (command in commands.iterator()) {
+                        all_commands += "$command.toString()\n"
+                    }
+                    Log.d("${packageName}.all_commands", all_commands)
+                    execRoot("echo $all_commands > /cache/recovery/command", "${packageName}.apply_rec");
+                    true
+                }
+                R.id.menu_rec_cmd_clear -> {
+                    recViewModel.delAllCommands()
+                    recViewModel.setDataChanged(true)
+                    true
                 }
                 else -> false
             }
