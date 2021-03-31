@@ -7,5 +7,5 @@ A toolbox for:
 
 ## Goals:
 
-- [x] Toggle Gcam by changing build.prop file.
+- [x] Toggle HAL3/Camera2Api by changing build.prop file.
 - [x] Automatic recovery operations by OpenRecoveryScript project.
