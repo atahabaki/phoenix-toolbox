@@ -1,8 +1,11 @@
 # Shamrock Toolbox
 
-Ultimate toolbox designed for GM5+ (shamrock) for testing purposes.
+A toolbox for:
+
+- HAL3/Camera2API toggling,
+- TWRP/Recovery Automation via OpenRecoveryScript...
 
 ## Goals:
 
 - [x] Toggle Gcam by changing build.prop file.
-- [ ] Automatic recovery operations by OpenRecoveryScript project.
+- [x] Automatic recovery operations by OpenRecoveryScript project.
