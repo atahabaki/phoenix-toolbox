@@ -118,8 +118,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_rec_cmd_clear -> {
-                    recViewModel.delAllCommands()
-                    recViewModel.setDataChanged(true)
+                    deleteCommands()
                     true
                 }
                 else -> false
@@ -127,16 +126,22 @@ class HomeActivity : AppCompatActivity() {
         }
     }
 
+    private fun deleteCommands() {
+        recViewModel.delAllCommands()
+        recViewModel.setDataChanged(true)
+        execRoot("su -c \"rm /cache/recovery/command\"", "${packageName}.deleteCommands")
+    }
+
     private fun applyCommands() {
         val commands = recViewModel.commands.value!!
-        execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec")
+        execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.applyCommands")
         for (command in commands.iterator()) {
             if (command.command == "install" && needsPatch()) {
-                execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.apply_rec")
+                execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.applyCommands")
             }
-            else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
+            else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.applyCommands")
         }
-        execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
+        execRoot("chmod 666 /cache/recovery/command", "${packageName}.applyCommands")
         notify(R.string.commands_applied)
     }
 
