@@ -23,8 +23,11 @@ import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
-import java.io.BufferedReader
-import java.io.InputStreamReader
+import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import java.io.*
 
 class HomeActivity : AppCompatActivity() {
 
@@ -134,30 +137,12 @@ class HomeActivity : AppCompatActivity() {
             else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
         }
         execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
-        if (checkApplied())
-            notify(R.string.commands_applied)
-        else
-            Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(getString(R.string.retry)) {
-                applyCommands()
-            }.setAnchorView(binding.mainBottomAppbar).show();
+        notify(R.string.commands_applied)
     }
 
     private fun needsPatch(): Boolean {
         listOf<String>("shamrock", "mido").forEach {
             return android.os.Build.DEVICE == it
-        }
-        return false
-    }
-
-    private fun checkApplied(): Boolean {
-        try {
-            val p = Runtime.getRuntime().exec("getprop $gcamProp")
-            p.waitFor()
-            val stdOut = BufferedReader(InputStreamReader(p.inputStream))
-            val line = stdOut.readLine().trim()
-            return line == "boot-recovery"
-        } catch (e: Exception) {
-            Log.d("${packageName}.checkApplied", "${e.message}")
         }
         return false
     }
