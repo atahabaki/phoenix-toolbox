@@ -50,36 +50,30 @@ class HomeActivity : AppCompatActivity() {
                 add<OpenRecoveryScriptingFragment>(R.id.main_fragment_container)
             }
         }
-        fabViewModel.isVisible.observe(this, Observer {
-            if (it)
-                binding.mainFab.visibility = View.VISIBLE
-            else binding.mainFab.visibility = View.GONE
-        })
-        fabViewModel.isClicked.observe(this, Observer {
-            if (it) {
-                val recoveryCommandDialog = RecoveryCommandDialog()
-                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
+        setupFab()
+        setupGcam()
+        setupMenu()
+        setupBottomAppBar()
+        setupNav()
+    }
+
+    private fun setupBottomAppBar() {
+        binding.mainBottomAppbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_rec_cmd_apply -> {
+                    applyCommands()
+                    true
+                }
+                R.id.menu_rec_cmd_clear -> {
+                    deleteCommands()
+                    true
+                }
+                else -> false
             }
-        })
-        binding.mainFab.setOnClickListener {
-            fabViewModel.setClickState(true)
         }
-        viewModel.selectedGcamState.observe(this, Observer {
-            if (it) {
-                notify(R.string.gcam_status_enabled)
-            }
-            else {
-                notify(R.string.gcam_status_disabled)
-            }
-        })
-        recMenuViewModel.isMenuActive.observe(this, Observer {
-            if (it) {
-                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
-            }
-            else {
-                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
-            }
-        })
+    }
+
+    private fun setupNav() {
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_menu_home -> {
@@ -111,32 +105,63 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
-        binding.mainBottomAppbar.setOnMenuItemClickListener {
-            when(it.itemId) {
-                R.id.menu_rec_cmd_apply -> {
-                    applyCommands()
-                    true
-                }
-                R.id.menu_rec_cmd_clear -> {
-                    recViewModel.delAllCommands()
-                    recViewModel.setDataChanged(true)
-                    true
-                }
-                else -> false
+    }
+
+    private fun setupMenu() {
+        recMenuViewModel.isMenuActive.observe(this, Observer {
+            if (it) {
+                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
             }
+            else {
+                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
+            }
+        })
+    }
+
+    private fun setupGcam() {
+        viewModel.selectedGcamState.observe(this, Observer {
+            if (it) {
+                notify(R.string.gcam_status_enabled)
+            }
+            else {
+                notify(R.string.gcam_status_disabled)
+            }
+        })
+    }
+
+    private fun setupFab() {
+        fabViewModel.isVisible.observe(this, Observer {
+            if (it)
+                binding.mainFab.visibility = View.VISIBLE
+            else binding.mainFab.visibility = View.GONE
+        })
+        fabViewModel.isClicked.observe(this, Observer {
+            if (it) {
+                val recoveryCommandDialog = RecoveryCommandDialog()
+                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
+            }
+        })
+        binding.mainFab.setOnClickListener {
+            fabViewModel.setClickState(true)
         }
+    }
+
+    private fun deleteCommands() {
+        recViewModel.delAllCommands()
+        recViewModel.setDataChanged(true)
+        execRoot("su -c \"rm /cache/recovery/command\"", "${packageName}.deleteCommands")
     }
 
     private fun applyCommands() {
         val commands = recViewModel.commands.value!!
-        execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec")
+        execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.applyCommands")
         for (command in commands.iterator()) {
             if (command.command == "install" && needsPatch()) {
-                execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.apply_rec")
+                execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.applyCommands")
             }
-            else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
+            else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.applyCommands")
         }
-        execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
+        execRoot("chmod 666 /cache/recovery/command", "${packageName}.applyCommands")
         notify(R.string.commands_applied)
     }
 
