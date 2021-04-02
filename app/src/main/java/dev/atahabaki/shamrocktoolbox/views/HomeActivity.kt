@@ -50,36 +50,13 @@ class HomeActivity : AppCompatActivity() {
                 add<OpenRecoveryScriptingFragment>(R.id.main_fragment_container)
             }
         }
-        fabViewModel.isVisible.observe(this, Observer {
-            if (it)
-                binding.mainFab.visibility = View.VISIBLE
-            else binding.mainFab.visibility = View.GONE
-        })
-        fabViewModel.isClicked.observe(this, Observer {
-            if (it) {
-                val recoveryCommandDialog = RecoveryCommandDialog()
-                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
-            }
-        })
-        binding.mainFab.setOnClickListener {
-            fabViewModel.setClickState(true)
-        }
-        viewModel.selectedGcamState.observe(this, Observer {
-            if (it) {
-                notify(R.string.gcam_status_enabled)
-            }
-            else {
-                notify(R.string.gcam_status_disabled)
-            }
-        })
-        recMenuViewModel.isMenuActive.observe(this, Observer {
-            if (it) {
-                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
-            }
-            else {
-                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
-            }
-        })
+        setupFab()
+        setupGcam()
+        setupMenu()
+        setupNav()
+    }
+
+    private fun setupNav() {
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_menu_home -> {
@@ -123,6 +100,45 @@ class HomeActivity : AppCompatActivity() {
                 }
                 else -> false
             }
+        }
+    }
+
+    private fun setupMenu() {
+        recMenuViewModel.isMenuActive.observe(this, Observer {
+            if (it) {
+                binding.mainBottomAppbar.replaceMenu(R.menu.recovery_cmd_actions)
+            }
+            else {
+                binding.mainBottomAppbar.replaceMenu(R.menu.empty)
+            }
+        })
+    }
+
+    private fun setupGcam() {
+        viewModel.selectedGcamState.observe(this, Observer {
+            if (it) {
+                notify(R.string.gcam_status_enabled)
+            }
+            else {
+                notify(R.string.gcam_status_disabled)
+            }
+        })
+    }
+
+    private fun setupFab() {
+        fabViewModel.isVisible.observe(this, Observer {
+            if (it)
+                binding.mainFab.visibility = View.VISIBLE
+            else binding.mainFab.visibility = View.GONE
+        })
+        fabViewModel.isClicked.observe(this, Observer {
+            if (it) {
+                val recoveryCommandDialog = RecoveryCommandDialog()
+                recoveryCommandDialog.show(supportFragmentManager,"${packageName}.recoveryCommandDialog")
+            }
+        })
+        binding.mainFab.setOnClickListener {
+            fabViewModel.setClickState(true)
         }
     }
 
