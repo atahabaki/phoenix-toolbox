@@ -35,4 +35,6 @@
     <string name="rec_cmd_decrypt_tip">Data bölümünü %1$s ile şifreler.</string>
     <string name="dont_know">Bunun ne yaptığı hakkkında hiçbir fikrim yok…</string>
     <string name="commands_applied">Uygulandı.</string>
+    <string name="commands_not_applied">Ne yazık ki uygulanamadı.</string>
+    <string name="retry">Tekrar deme</string>
 </resources>
