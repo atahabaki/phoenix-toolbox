@@ -23,6 +23,8 @@ import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
+import java.io.BufferedReader
+import java.io.InputStreamReader
 
 class HomeActivity : AppCompatActivity() {
 
@@ -121,6 +123,12 @@ class HomeActivity : AppCompatActivity() {
                         else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
                     }
                     execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
+                    if (checkApplied())
+                        notify(R.string.commands_applied)
+                    else
+                        Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(getString(R.string.retry)) {
+                            //Todo(1)
+                        }.setAnchorView(binding.mainBottomAppbar).show();
                     true
                 }
                 R.id.menu_rec_cmd_clear -> {
@@ -131,6 +139,19 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun checkApplied(): Boolean {
+        try {
+            val p = Runtime.getRuntime().exec("getprop $gcamProp")
+            p.waitFor()
+            val stdOut = BufferedReader(InputStreamReader(p.inputStream))
+            val line = stdOut.readLine().trim()
+            return line == "boot-recovery"
+        } catch (e: Exception) {
+            Log.d("${packageName}.checkApplied", "${e.message}")
+        }
+        return false
     }
 
     private fun gotoBuyMeACoffee() {
