@@ -35,6 +35,4 @@
     <string name="rec_cmd_decrypt_tip">Déchiffre les données avec ce mot de passe %1$s</string>
     <string name="dont_know">Je ne sais pas ce que ça fait…</string>
     <string name="commands_applied">Les actions appliquées.</string>
-    <string name="commands_not_applied">Les commandes n\'ont pas pu être appliquées.</string>
-    <string name="retry">Recommencez</string>
 </resources>

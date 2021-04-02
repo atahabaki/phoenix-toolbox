@@ -49,6 +49,4 @@
         <item>fixperms</item>
         <item>decrypt</item>
     </string-array>
-    <string name="commands_not_applied">Commands could not applied.</string>
-    <string name="retry">Retry</string>
 </resources>
