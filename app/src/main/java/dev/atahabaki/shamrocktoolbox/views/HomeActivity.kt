@@ -53,7 +53,24 @@ class HomeActivity : AppCompatActivity() {
         setupFab()
         setupGcam()
         setupMenu()
+        setupBottomAppBar()
         setupNav()
+    }
+
+    private fun setupBottomAppBar() {
+        binding.mainBottomAppbar.setOnMenuItemClickListener {
+            when(it.itemId) {
+                R.id.menu_rec_cmd_apply -> {
+                    applyCommands()
+                    true
+                }
+                R.id.menu_rec_cmd_clear -> {
+                    deleteCommands()
+                    true
+                }
+                else -> false
+            }
+        }
     }
 
     private fun setupNav() {
@@ -84,19 +101,6 @@ class HomeActivity : AppCompatActivity() {
                     dismissMainNavView()
                     gotoIssues()
                     return@setNavigationItemSelectedListener true
-                }
-                else -> false
-            }
-        }
-        binding.mainBottomAppbar.setOnMenuItemClickListener {
-            when(it.itemId) {
-                R.id.menu_rec_cmd_apply -> {
-                    applyCommands()
-                    true
-                }
-                R.id.menu_rec_cmd_clear -> {
-                    deleteCommands()
-                    true
                 }
                 else -> false
             }
