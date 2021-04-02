@@ -111,24 +111,7 @@ class HomeActivity : AppCompatActivity() {
         binding.mainBottomAppbar.setOnMenuItemClickListener {
             when(it.itemId) {
                 R.id.menu_rec_cmd_apply -> {
-                    val commands = recViewModel.commands.value!!
-                    execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec")
-                    for (command in commands.iterator()) {
-                        if (command.command == "install" && (
-                                android.os.Build.DEVICE == "shamrock" ||
-                                android.os.Build.DEVICE == "mido"
-                            )) {
-                            execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.apply_rec")
-                        }
-                        else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
-                    }
-                    execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
-                    if (checkApplied())
-                        notify(R.string.commands_applied)
-                    else
-                        Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(getString(R.string.retry)) {
-                            //Todo(1)
-                        }.setAnchorView(binding.mainBottomAppbar).show();
+                    applyCommands()
                     true
                 }
                 R.id.menu_rec_cmd_clear -> {
@@ -139,6 +122,31 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
+    }
+
+    private fun applyCommands() {
+        val commands = recViewModel.commands.value!!
+        execRoot("echo \"boot-recovery\" > /cache/recovery/command", "${packageName}.apply_rec")
+        for (command in commands.iterator()) {
+            if (command.command == "install" && needsPatch()) {
+                execRoot("echo --update_package=${command.parameters?.joinToString(" ")}>> /cache/recovery/command", "${packageName}.apply_rec")
+            }
+            else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.apply_rec")
+        }
+        execRoot("chmod 666 /cache/recovery/command", "${packageName}.apply_rec");
+        if (checkApplied())
+            notify(R.string.commands_applied)
+        else
+            Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(getString(R.string.retry)) {
+                applyCommands()
+            }.setAnchorView(binding.mainBottomAppbar).show();
+    }
+
+    private fun needsPatch(): Boolean {
+        listOf<String>("shamrock", "mido").forEach {
+            return android.os.Build.DEVICE == it
+        }
+        return false
     }
 
     private fun checkApplied(): Boolean {
