@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.fragment.app.FragmentTransaction
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
@@ -44,10 +45,10 @@ class HomeActivity : AppCompatActivity() {
         initView()
         initBottomNav()
         if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction()
             supportFragmentManager.commit {
                 setReorderingAllowed(true)
-                //add<QuickActionsFragment>(R.id.main_fragment_container)
-                add<OpenRecoveryScriptingFragment>(R.id.main_fragment_container)
+                replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment()).addToBackStack("recovery")
             }
         }
         setupFab()
@@ -80,7 +81,7 @@ class HomeActivity : AppCompatActivity() {
                     dismissMainNavView()
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace(R.id.main_fragment_container, QuickActionsFragment())
+                        replace(R.id.main_fragment_container, QuickActionsFragment()).addToBackStack("quick_actions")
                     }
                     return@setNavigationItemSelectedListener true
                 }
@@ -88,7 +89,7 @@ class HomeActivity : AppCompatActivity() {
                     dismissMainNavView()
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
-                        replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment())
+                        replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment()).addToBackStack("recovery")
                     }
                     true
                 }
