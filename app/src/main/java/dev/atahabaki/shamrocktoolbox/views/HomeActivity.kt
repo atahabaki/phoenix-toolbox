@@ -21,6 +21,9 @@ import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import java.io.*
 
 class HomeActivity : AppCompatActivity() {
@@ -166,12 +169,9 @@ class HomeActivity : AppCompatActivity() {
 
     private fun isApplied(): Boolean {
         val from = "/cache/recovery/command"
-        execRoot("su -c \"[ -e \"$from\" ] && cp \"$from\" ${cacheDir.absolutePath}", "${packageName}.applyCommands")
+        execRoot("su -c '[ -e $from ] && cp $from ${cacheDir.absolutePath}/command'", "${packageName}.applyCommands")
         return try {
-            val reader = FileReader("${cacheDir.absolutePath}/command")
-            reader.forEachLine {
-                Log.d("${packageName}.fileContent", "content: $it")
-            }
+            FileReader("${cacheDir.absolutePath}/command")
             true
         }
         catch (e: FileNotFoundException) {
