@@ -82,7 +82,7 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
             val reader = FileReader("$to/command")
             reader.forEachLine {
                 val line = it.trim()
-                if (line != "boot-recovery" && line.startsWith("--update-package=")) {
+                if (line != "boot-recovery" && line.startsWith("--update_package=")) {
                     val param = line.substring(17)
                     commands.add(Command(command = "install", parameters = listOf(param)))
                 }
