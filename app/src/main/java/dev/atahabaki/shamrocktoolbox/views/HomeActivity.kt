@@ -4,7 +4,6 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
@@ -17,13 +16,11 @@ import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
 import dev.atahabaki.shamrocktoolbox.exec
 import dev.atahabaki.shamrocktoolbox.execRoot
+import dev.atahabaki.shamrocktoolbox.needsPatch
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
 import java.io.*
 
 class HomeActivity : AppCompatActivity() {
@@ -177,13 +174,6 @@ class HomeActivity : AppCompatActivity() {
         catch (e: FileNotFoundException) {
             false
         }
-    }
-
-    private fun needsPatch(): Boolean {
-        listOf<String>("shamrock", "mido").forEach {
-            return android.os.Build.DEVICE == it
-        }
-        return false
     }
 
     private fun gotoBuyMeACoffee() {
