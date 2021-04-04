@@ -4,13 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -19,15 +16,10 @@ import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
 import dev.atahabaki.shamrocktoolbox.exec
 import dev.atahabaki.shamrocktoolbox.execRoot
-import dev.atahabaki.shamrocktoolbox.models.Command
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.io.*
 
 class HomeActivity : AppCompatActivity() {
