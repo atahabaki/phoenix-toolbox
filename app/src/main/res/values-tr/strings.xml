@@ -34,5 +34,7 @@
     <string name="rec_cmd_fixperms_tip">İzinleri düzelt betiğini (fix permissions script) başlatır.</string>
     <string name="rec_cmd_decrypt_tip">Data bölümünü %1$s ile şifreler.</string>
     <string name="dont_know">Bunun ne yaptığı hakkkında hiçbir fikrim yok…</string>
-    <string name="commands_applied">Uygulandı.</string>
+    <string name="commands_applied">Komutlar uygulandı.</string>
+    <string name="commands_not_applied">Komutlar uygulanamadı.</string>
+    <string name="retry">Tekrar Dene</string>
 </resources>
