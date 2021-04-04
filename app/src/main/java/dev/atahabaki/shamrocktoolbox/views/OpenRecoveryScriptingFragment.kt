@@ -15,7 +15,6 @@ import dev.atahabaki.shamrocktoolbox.adapters.RecoveryCommandsAdapter
 import dev.atahabaki.shamrocktoolbox.databinding.FragmentOpenRecoveryBinding
 import dev.atahabaki.shamrocktoolbox.execRoot
 import dev.atahabaki.shamrocktoolbox.models.Command
-import dev.atahabaki.shamrocktoolbox.needsPatch
 import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
