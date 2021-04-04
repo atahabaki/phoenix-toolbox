@@ -31,4 +31,8 @@ class RecoveryCommandViewModel: ViewModel() {
     fun setDataChanged(changed: Boolean) {
         _isChanged.value = changed
     }
+
+    fun setCommands(commands: MutableList<Command>) {
+        mutableCommands.value = commands
+    }
 }
