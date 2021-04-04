@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
@@ -20,6 +21,9 @@ import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
 import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import java.io.*
 
 class HomeActivity : AppCompatActivity() {
@@ -155,7 +159,24 @@ class HomeActivity : AppCompatActivity() {
             else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.applyCommands")
         }
         execRoot("chmod 666 /cache/recovery/command", "${packageName}.applyCommands")
-        notify(R.string.commands_applied)
+        if (isApplied())
+            notify(R.string.commands_applied)
+        else
+            Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(R.string.retry, View.OnClickListener {
+                applyCommands()
+            }).setAnchorView(binding.mainBottomAppbar).show()
+    }
+
+    private fun isApplied(): Boolean {
+        val from = "/cache/recovery/command"
+        execRoot("su -c '[ -e $from ] && cp $from ${cacheDir.absolutePath}/command'", "${packageName}.applyCommands")
+        return try {
+            FileReader("${cacheDir.absolutePath}/command")
+            true
+        }
+        catch (e: FileNotFoundException) {
+            false
+        }
     }
 
     private fun needsPatch(): Boolean {
