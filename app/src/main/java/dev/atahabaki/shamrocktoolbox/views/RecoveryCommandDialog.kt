@@ -39,9 +39,6 @@ class RecoveryCommandDialog: DialogFragment() {
                 if (validation) {
                     val command = binding.dialogNewRecCmdType.adapter?.getItem(binding.dialogNewRecCmdType.selectedItemPosition).toString()
                     val parameter = binding.dialogNewRecCmdParameter.editText?.text?.toString()?.split(',')
-                    Log.d("shamrock.cmd", "CMD: $command")
-                    Log.d("shamrock.cmd", "PARAM: $parameter")
-                    //TODO change Command's parameter to String, it's not effective List<String>
                     cmdViewModel.addCommand(Command(command, parameter))
                     cmdViewModel.setDataChanged(true)
                 }
