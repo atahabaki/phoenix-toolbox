@@ -74,11 +74,11 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
 
     private fun loadCommands(): MutableList<Command> {
         val from = "/cache/recovery/command"
-        val to = "${activity?.cacheDir?.absolutePath}"
-        execRoot("su -c '[ -e $from ] && cp $from $to/command'", "${activity?.packageName}.applyCommands")
+        val to = "${activity?.cacheDir?.absolutePath}/command"
+        execRoot("su -c '[ -e $from ] && cp $from $to || rm $to'", "${activity?.packageName}.applyCommands")
         val commands = mutableListOf<Command>()
         try {
-            val reader = FileReader("$to/command")
+            val reader = FileReader(to)
             reader.forEachLine {
                 val line = it.trim()
                 if (line != "boot-recovery" && line.startsWith("--update_package=")) {
