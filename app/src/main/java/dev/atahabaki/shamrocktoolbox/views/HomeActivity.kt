@@ -8,8 +8,10 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
+import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.shamrocktoolbox.R
@@ -125,9 +127,8 @@ class HomeActivity : AppCompatActivity() {
 
     private fun setupFab() {
         fabViewModel.isVisible.observe(this, Observer {
-            if (it)
-                binding.mainFab.visibility = View.VISIBLE
-            else binding.mainFab.visibility = View.GONE
+            if (it) binding.mainFab.show()
+            else binding.mainFab.hide()
         })
         fabViewModel.isClicked.observe(this, Observer {
             if (it) {
@@ -143,6 +144,7 @@ class HomeActivity : AppCompatActivity() {
     private fun deleteCommands() {
         recViewModel.delAllCommands()
         recViewModel.setDataChanged(true)
+        deleteCommandFile()
         execRoot("su -c \"rm /cache/recovery/command\"", "${packageName}.deleteCommands")
     }
 
