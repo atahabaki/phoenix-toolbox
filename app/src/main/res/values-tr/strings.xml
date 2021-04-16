@@ -16,7 +16,7 @@
     <string name="recovery_cmd_param_tooltip">Parametreler</string>
     <string name="recovery_cmd">Komut:</string>
     <string name="dialog_new_command_title">Yeni Komut</string>
-    <string name="add_cmd">Komut Ekle</string>
+    <string name="add_cmd">Ekle</string>
     <string name="cancel">Iptal</string>
     <string name="clear_all">Hepsini Temizle</string>
     <string name="apply">Uygula</string>
