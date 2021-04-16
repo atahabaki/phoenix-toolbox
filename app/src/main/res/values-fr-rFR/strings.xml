@@ -16,7 +16,7 @@
     <string name="recovery_cmd_param_tooltip">Paramètres</string>
     <string name="recovery_cmd">Commander:</string>
     <string name="dialog_new_command_title">Nouvelle Commande</string>
-    <string name="add_cmd">Ajouter Une Commande</string>
+    <string name="add_cmd">Ajouter</string>
     <string name="cancel">Annuler</string>
     <string name="clear_all">Tout Effacer</string>
     <string name="apply">Appliquer</string>
