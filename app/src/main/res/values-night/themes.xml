@@ -20,6 +20,9 @@
         <item name="bottomAppBarStyle">@style/Theme.ShamrockToolbox.BottomAppBar</item>
         <!-- BottomNav/Sheet -->
         <item name="navigationViewStyle">@style/Theme.ShamrockToolbox.NavigationView</item>
+        <!-- Dialog -->
+        <item name="materialAlertDialogTheme">@style/Theme.ShamrockToolbox.Dialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Theme.ShamrockToolbox.Dialog.Title</item>
     </style>
 
     <style name="Theme.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
@@ -54,5 +57,19 @@
         <item name="itemTextColor">@color/primaryTextColor</item>
         <item name="itemShapeFillColor">@android:color/black</item>
         <item name="android:background">@android:color/black</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:background">@android:color/black</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Theme.ShamrockToolbox.Dialog.NegativeButton</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.Dialog.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/primaryLightColor</item>
+        <item name="android:alpha">.75</item>
+    </style>
+
+    <style name="Theme.ShamrockToolbox.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+        <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 </resources>
