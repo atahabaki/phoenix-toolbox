@@ -160,7 +160,6 @@ class HomeActivity : AppCompatActivity() {
         execRoot("chmod 666 /cache/recovery/command", "${packageName}.applyCommands")
         if (isApplied()) {
             notify(R.string.commands_applied)
-            deleteCommandFile()
         }
         else
             Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(R.string.retry, View.OnClickListener {
