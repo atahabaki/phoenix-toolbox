@@ -1,14 +1,13 @@
 package dev.atahabaki.shamrocktoolbox.views
 
-import android.app.AlertDialog
 import android.app.Dialog
 import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import dev.atahabaki.shamrocktoolbox.R
 import dev.atahabaki.shamrocktoolbox.databinding.DialogNewRecoveryCommandBinding
 import dev.atahabaki.shamrocktoolbox.models.Command
@@ -31,9 +30,9 @@ class RecoveryCommandDialog: DialogFragment() {
             }
         }
         return activity?.let {
-            val builder = AlertDialog.Builder(it)
+            val builder = MaterialAlertDialogBuilder(it)
             builder.setView(binding.root)
-            builder.setMessage(R.string.dialog_new_command_title)
+            builder.setTitle(R.string.dialog_new_command_title)
             builder.setPositiveButton(R.string.add_cmd, DialogInterface.OnClickListener { dialog, which ->
                 val validation = true //TODO validateCmd()
                 if (validation) {
