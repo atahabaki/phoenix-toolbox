@@ -156,12 +156,23 @@ class HomeActivity : AppCompatActivity() {
             else execRoot("echo \"$command\" >> /cache/recovery/command", "${packageName}.applyCommands")
         }
         execRoot("chmod 666 /cache/recovery/command", "${packageName}.applyCommands")
-        if (isApplied())
+        if (isApplied()) {
             notify(R.string.commands_applied)
+            deleteCommandFile()
+        }
         else
             Snackbar.make(binding.root, R.string.commands_not_applied, Snackbar.LENGTH_SHORT).setAction(R.string.retry, View.OnClickListener {
                 applyCommands()
             }).setAnchorView(binding.mainBottomAppbar).show()
+    }
+
+    private fun deleteCommandFile(): Boolean {
+        val path = "${cacheDir.absolutePath}/command"
+        val file = File(path)
+        if (file.isFile) {
+            return file.delete()
+        }
+        return false
     }
 
     private fun isApplied(): Boolean {
