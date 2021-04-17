@@ -77,7 +77,7 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
 
     private fun setupRecyclerView() {
         binding.openRecoveryRecycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            private val startAnimationMargin: Float = 1.25f
+            private val startAnimationMargin: Float = 0.25f
 
             private val topMarginY by lazy { binding.openRecoveryRecycler.top + startAnimationMargin }
             private val bottomMarginY by lazy { binding.openRecoveryRecycler.bottom - startAnimationMargin }
