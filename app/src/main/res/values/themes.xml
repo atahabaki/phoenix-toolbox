@@ -72,4 +72,8 @@
     <style name="Theme.ShamrockToolbox.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
+
+    <style name="Theme.ShamrockToolbox.LaunchStyle" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/launch_background_white</item>
+    </style>
 </resources>
