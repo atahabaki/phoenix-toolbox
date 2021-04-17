@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
+import androidx.core.view.children
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -70,6 +72,37 @@ class OpenRecoveryScriptingFragment: Fragment(R.layout.fragment_open_recovery) {
                 adapter.notifyDataSetChanged()
             })
         }
+        setupRecyclerView()
+    }
+
+    private fun setupRecyclerView() {
+        binding.openRecoveryRecycler.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            private val startAnimationMargin: Float = 1.25f
+
+            private val topMarginY by lazy { binding.openRecoveryRecycler.top + startAnimationMargin }
+            private val bottomMarginY by lazy { binding.openRecoveryRecycler.bottom - startAnimationMargin }
+
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                recyclerView.children.forEach {
+                    when {
+                        it.shouldStartShowAnimation(dy) -> startAnimation(it)
+                        it.shouldStartHideAnimation(dy) -> startAnimation(it)
+                    }
+                }
+            }
+            private fun View.shouldStartShowAnimation(dy: Int): Boolean =
+                bottom >= topMarginY && bottom + dy < topMarginY ||
+                        top <= bottomMarginY && top + dy > bottomMarginY
+
+            private fun View.shouldStartHideAnimation(dy: Int): Boolean =
+                bottom <= topMarginY && bottom + dy > topMarginY ||
+                        top >= bottomMarginY && top + dy < bottomMarginY
+
+            private fun startAnimation(view: View) {
+                view.startAnimation(AnimationUtils.loadAnimation(context, R.anim.complex_anim))
+            }
+        })
     }
 
     private fun loadCommands(): MutableList<Command> {
