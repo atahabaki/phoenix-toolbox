@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.ShamrockToolbox" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.PhoenixToolbox" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/primaryLightColor</item>
         <item name="colorPrimaryVariant">@color/primaryColor</item>
@@ -13,67 +13,67 @@
         <item name="android:statusBarColor" tools:targetApi="l">@android:color/black</item>
         <item name="android:colorBackground">@android:color/black</item>
 
-        <item name="snackbarStyle">@style/Theme.ShamrockToolbox.Snackbar</item>
-        <item name="snackbarButtonStyle">@style/Theme.ShamrockToolbox.SnackbarButton</item>
-        <item name="snackbarTextViewStyle">@style/Theme.ShamrockToolbox.SnackbarTextView</item>
+        <item name="snackbarStyle">@style/Theme.PhoenixToolbox.Snackbar</item>
+        <item name="snackbarButtonStyle">@style/Theme.PhoenixToolbox.SnackbarButton</item>
+        <item name="snackbarTextViewStyle">@style/Theme.PhoenixToolbox.SnackbarTextView</item>
         <!-- BottomAppBar -->
-        <item name="bottomAppBarStyle">@style/Theme.ShamrockToolbox.BottomAppBar</item>
+        <item name="bottomAppBarStyle">@style/Theme.PhoenixToolbox.BottomAppBar</item>
         <!-- BottomNav/Sheet -->
-        <item name="navigationViewStyle">@style/Theme.ShamrockToolbox.NavigationView</item>
+        <item name="navigationViewStyle">@style/Theme.PhoenixToolbox.NavigationView</item>
         <!-- Dialog -->
-        <item name="materialAlertDialogTheme">@style/Theme.ShamrockToolbox.Dialog</item>
-        <item name="materialAlertDialogTitleTextStyle">@style/Theme.ShamrockToolbox.Dialog.Title</item>
+        <item name="materialAlertDialogTheme">@style/Theme.PhoenixToolbox.Dialog</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Theme.PhoenixToolbox.Dialog.Title</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.ShamrockToolbox.Snackbar</item>
+    <style name="Theme.PhoenixToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.PhoenixToolbox.Snackbar</item>
         <item name="actionTextColorAlpha">1</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.SnackbarTextView" parent="Widget.MaterialComponents.Snackbar.TextView">
+    <style name="Theme.PhoenixToolbox.SnackbarTextView" parent="Widget.MaterialComponents.Snackbar.TextView">
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.SnackbarButton" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
+    <style name="Theme.PhoenixToolbox.SnackbarButton" parent="Widget.MaterialComponents.Button.TextButton.Snackbar">
         <item name="android:textColor">@color/primaryColor</item>
     </style>
 
-    <style name="ThemeOverlay.ShamrockToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+    <style name="ThemeOverlay.PhoenixToolbox.Snackbar" parent="Widget.MaterialComponents.Snackbar">
         <item name="colorOnSurface">@android:color/black</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
-        <item name="materialThemeOverlay">@style/ThemeOverlay.ShamrockToolbox.BottomAppBar</item>
+    <style name="Theme.PhoenixToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.PhoenixToolbox.BottomAppBar</item>
     </style>
 
-    <style name="ThemeOverlay.ShamrockToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
+    <style name="ThemeOverlay.PhoenixToolbox.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar.PrimarySurface">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorOnSurface">@android:color/black</item>
         <item name="colorSurface">@android:color/black</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.NavigationView" parent="Widget.MaterialComponents.NavigationView">
+    <style name="Theme.PhoenixToolbox.NavigationView" parent="Widget.MaterialComponents.NavigationView">
         <item name="itemIconTint">@color/primaryColor</item>
         <item name="itemTextColor">@color/primaryTextColor</item>
         <item name="itemShapeFillColor">@android:color/black</item>
         <item name="android:background">@android:color/black</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+    <style name="Theme.PhoenixToolbox.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
         <item name="android:background">@android:color/black</item>
-        <item name="buttonBarNegativeButtonStyle">@style/Theme.ShamrockToolbox.Dialog.NegativeButton</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Theme.PhoenixToolbox.Dialog.NegativeButton</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.Dialog.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+    <style name="Theme.PhoenixToolbox.Dialog.NegativeButton" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
         <item name="android:textColor">@color/primaryLightColor</item>
         <item name="android:alpha">.75</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
+    <style name="Theme.PhoenixToolbox.Dialog.Title" parent="MaterialAlertDialog.MaterialComponents.Title.Text">
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="Theme.ShamrockToolbox.LaunchStyle" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.PhoenixToolbox.LaunchStyle" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/launch_background_black</item>
     </style>
 </resources>
