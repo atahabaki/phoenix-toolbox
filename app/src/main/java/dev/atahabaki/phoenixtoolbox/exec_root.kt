@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox
+package dev.atahabaki.phoenixtoolbox
 
 import android.util.Log
 

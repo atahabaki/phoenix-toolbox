@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     android:versionCode="2"
     android:versionName="1.4.2"
-    package="dev.atahabaki.shamrocktoolbox">
+    package="dev.atahabaki.phoenixtoolbox">
 
     <application
         android:allowBackup="true"
@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShamrockToolbox">
-        <activity android:name=".views.HomeActivity"
+        <activity android:name="dev.atahabaki.phoenixtoolbox.views.HomeActivity"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".widgets.GcamWidgetProvider">
+        <receiver android:name="dev.atahabaki.phoenixtoolbox.widgets.GcamWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

@@ -1,12 +1,12 @@
-package dev.atahabaki.shamrocktoolbox.adapters
+package dev.atahabaki.phoenixtoolbox.adapters
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.models.Command
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.models.Command
 
 class RecoveryCommandsAdapter(
     private var commands: List<Command>

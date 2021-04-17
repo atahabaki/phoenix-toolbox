@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.viewmodels
+package dev.atahabaki.phoenixtoolbox.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
