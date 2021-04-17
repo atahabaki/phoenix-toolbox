@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox
+package dev.atahabaki.phoenixtoolbox
 
 fun needsPatch(): Boolean {
     listOf<String>("shamrock", "mido").forEach {

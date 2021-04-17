@@ -1,9 +1,9 @@
-package dev.atahabaki.shamrocktoolbox.viewmodels
+package dev.atahabaki.phoenixtoolbox.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import dev.atahabaki.shamrocktoolbox.models.Command
+import dev.atahabaki.phoenixtoolbox.models.Command
 
 class RecoveryCommandViewModel: ViewModel() {
     private val mutableCommands = MutableLiveData<MutableList<Command>>()

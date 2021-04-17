@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.views
+package dev.atahabaki.phoenixtoolbox.views
 
 import android.os.Bundle
 import android.util.Log
@@ -7,12 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.databinding.FragmentQuickActionsBinding
-import dev.atahabaki.shamrocktoolbox.execRoot
-import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.databinding.FragmentQuickActionsBinding
+import dev.atahabaki.phoenixtoolbox.execRoot
+import dev.atahabaki.phoenixtoolbox.viewmodels.FabStateViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryMenuStateViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.ToggleGcamViewModel
 import java.io.BufferedReader
 import java.io.InputStreamReader
 

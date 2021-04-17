@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.views
+package dev.atahabaki.phoenixtoolbox.views
 
 import android.content.Intent
 import android.net.Uri
@@ -14,15 +14,15 @@ import androidx.lifecycle.Observer
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.databinding.ActivityHomeBinding
-import dev.atahabaki.shamrocktoolbox.exec
-import dev.atahabaki.shamrocktoolbox.execRoot
-import dev.atahabaki.shamrocktoolbox.needsPatch
-import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.ToggleGcamViewModel
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.databinding.ActivityHomeBinding
+import dev.atahabaki.phoenixtoolbox.exec
+import dev.atahabaki.phoenixtoolbox.execRoot
+import dev.atahabaki.phoenixtoolbox.needsPatch
+import dev.atahabaki.phoenixtoolbox.viewmodels.FabStateViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryMenuStateViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.ToggleGcamViewModel
 import java.io.*
 
 class HomeActivity : AppCompatActivity() {

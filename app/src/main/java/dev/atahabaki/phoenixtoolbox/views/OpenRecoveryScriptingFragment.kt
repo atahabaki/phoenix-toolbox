@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.views
+package dev.atahabaki.phoenixtoolbox.views
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,14 +10,14 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.adapters.RecoveryCommandsAdapter
-import dev.atahabaki.shamrocktoolbox.databinding.FragmentOpenRecoveryBinding
-import dev.atahabaki.shamrocktoolbox.execRoot
-import dev.atahabaki.shamrocktoolbox.models.Command
-import dev.atahabaki.shamrocktoolbox.viewmodels.FabStateViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryMenuStateViewModel
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.adapters.RecoveryCommandsAdapter
+import dev.atahabaki.phoenixtoolbox.databinding.FragmentOpenRecoveryBinding
+import dev.atahabaki.phoenixtoolbox.execRoot
+import dev.atahabaki.phoenixtoolbox.models.Command
+import dev.atahabaki.phoenixtoolbox.viewmodels.FabStateViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryMenuStateViewModel
 import java.io.FileReader
 import java.lang.Exception
 

@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.widgets
+package dev.atahabaki.phoenixtoolbox.widgets
 
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
@@ -8,8 +8,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.RemoteViews
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.execRoot
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.execRoot
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
@@ -17,7 +17,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     private val gcamProp = "persist.camera.HAL3.enabled"
     private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
-    private val TOGGLE_ACTION= "dev.atahabaki.shamrocktoolbox.appwidget.TOGGLE_ACTION"
+    private val TOGGLE_ACTION= "dev.atahabaki.phoenixtoolbox.appwidget.TOGGLE_ACTION"
 
     override fun onUpdate(
         context: Context?,

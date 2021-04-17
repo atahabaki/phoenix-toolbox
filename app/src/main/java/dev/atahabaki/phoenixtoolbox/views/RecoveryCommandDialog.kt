@@ -1,4 +1,4 @@
-package dev.atahabaki.shamrocktoolbox.views
+package dev.atahabaki.phoenixtoolbox.views
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -8,10 +8,10 @@ import android.widget.AdapterView
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import dev.atahabaki.shamrocktoolbox.R
-import dev.atahabaki.shamrocktoolbox.databinding.DialogNewRecoveryCommandBinding
-import dev.atahabaki.shamrocktoolbox.models.Command
-import dev.atahabaki.shamrocktoolbox.viewmodels.RecoveryCommandViewModel
+import dev.atahabaki.phoenixtoolbox.R
+import dev.atahabaki.phoenixtoolbox.databinding.DialogNewRecoveryCommandBinding
+import dev.atahabaki.phoenixtoolbox.models.Command
+import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryCommandViewModel
 import java.lang.IllegalStateException
 
 class RecoveryCommandDialog: DialogFragment() {
