@@ -73,7 +73,8 @@
         <item name="android:textColor">@color/primaryTextColor</item>
     </style>
 
-    <style name="Theme.PhoenixToolbox.LaunchStyle" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.PhoenixToolbox.LaunchStyle" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:windowBackground">@drawable/launch_background_white</item>
+        <item name="android:windowFullscreen">true</item>
     </style>
 </resources>
