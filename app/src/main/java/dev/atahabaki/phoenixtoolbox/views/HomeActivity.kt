@@ -8,10 +8,8 @@ import android.view.View
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.annotation.StringRes
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.commit
 import androidx.lifecycle.Observer
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import dev.atahabaki.phoenixtoolbox.R
