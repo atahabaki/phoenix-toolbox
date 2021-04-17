@@ -1,4 +1,4 @@
-![Phoenix Toolbox Logo](https://github.com/atahabaki/shamrock-toolbox/blob/main/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png?raw=true)
+![Phoenix Toolbox Logo](https://github.com/atahabaki/shamrock-toolbox/blob/main/images/shamrock-toolbox.svg?raw=true)
 
 # Phoenix Toolbox
 
