@@ -12,10 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PhoenixToolbox">
         <activity android:name=".views.HomeActivity"
+            android:theme="@style/Theme.PhoenixToolbox"
             android:configChanges="orientation"
             android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".views.SplashActivity">
+        <activity android:name=".views.SplashActivity"
+            android:theme="@style/Theme.PhoenixToolbox.LaunchStyle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
