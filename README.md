@@ -1,4 +1,4 @@
-![Phoenix Toolbox Logo](https://github.com/atahabaki/shamrock-toolbox/blob/main/images/shamrock-toolbox.svg?raw=true)
+![Phoenix Toolbox Logo](https://github.com/atahabaki/shamrock-toolbox/blob/main/images/shamrock-toolbox.big.svg?raw=true)
 
 # Phoenix Toolbox
 
