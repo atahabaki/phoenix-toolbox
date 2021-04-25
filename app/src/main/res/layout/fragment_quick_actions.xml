@@ -35,7 +35,7 @@
         app:icon="@drawable/ic_reload"
         android:layout_marginStart="20dp"
         android:layout_marginLeft="20dp"
-        android:text="@string/reload_gcam_status"
+        android:text="@string/reload"
         app:layout_constraintTop_toBottomOf="@id/quick_access_toggle_gcam"
         app:layout_constraintStart_toEndOf="@id/quick_access_clear_cache"
         app:layout_constraintEnd_toEndOf="@id/quick_access_toggle_gcam"/>
