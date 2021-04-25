@@ -37,8 +37,22 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         fabViewModel.setVisibility(false)
+        setupSwitch()
         recMenuViewModel.setState(false)
+        binding.quickAccessClearCache.setOnClickListener {
+            execRoot("rm -rf /cache/*", "${activity?.packageName}.clearCache")
+        }
+        binding.quickAccessReloadGcamStatus.setOnClickListener {
+            setupSwitchStatus()
+        }
+    }
+
+    private fun setupSwitchStatus() {
         binding.quickAccessToggleGcam.isChecked = getGcamStatus()
+    }
+
+    private fun setupSwitch() {
+        setupSwitchStatus()
         binding.quickAccessToggleGcam.setOnCheckedChangeListener { _, isChecked -> toggleGcam(isChecked)}
     }
 
