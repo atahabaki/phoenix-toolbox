@@ -41,6 +41,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         recMenuViewModel.setState(false)
         binding.quickAccessClearCache.setOnClickListener {
             execRoot("rm -rf /cache/*", "${activity?.packageName}.clearCache")
+            execRoot("rm -rf /data/user/0/*/cache", "${activity?.packageName}.clearCache")
         }
         binding.quickAccessReloadGcamStatus.setOnClickListener {
             setupSwitchStatus()
