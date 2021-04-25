@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import dev.atahabaki.phoenixtoolbox.R
 import dev.atahabaki.phoenixtoolbox.databinding.FragmentQuickActionsBinding
+import dev.atahabaki.phoenixtoolbox.deleteCache
 import dev.atahabaki.phoenixtoolbox.execRoot
 import dev.atahabaki.phoenixtoolbox.viewmodels.FabStateViewModel
 import dev.atahabaki.phoenixtoolbox.viewmodels.RecoveryMenuStateViewModel
@@ -40,7 +41,7 @@ class QuickActionsFragment : Fragment(R.layout.fragment_quick_actions) {
         setupSwitch()
         recMenuViewModel.setState(false)
         binding.quickAccessClearCache.setOnClickListener {
-            execRoot("rm -rf /cache/*", "${activity?.packageName}.clearCache")
+            deleteCache(activity?.packageName!!)
         }
         binding.quickAccessReloadGcamStatus.setOnClickListener {
             setupSwitchStatus()
