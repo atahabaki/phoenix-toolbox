@@ -16,4 +16,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/quick_access_clear_cache"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/clear_cache"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        app:layout_constraintTop_toBottomOf="@id/quick_access_toggle_gcam"
+        app:layout_constraintStart_toStartOf="@id/quick_access_toggle_gcam"
+        app:layout_constraintEnd_toStartOf="@id/quick_access_reload_gcam_status"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:padding="0dp"
+        android:id="@+id/quick_access_reload_gcam_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/ic_reload"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/reload_gcam_status"
+        app:layout_constraintTop_toBottomOf="@id/quick_access_toggle_gcam"
+        app:layout_constraintStart_toEndOf="@id/quick_access_clear_cache"
+        app:layout_constraintEnd_toEndOf="@id/quick_access_toggle_gcam"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
