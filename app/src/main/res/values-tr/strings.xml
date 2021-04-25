@@ -37,4 +37,6 @@
     <string name="commands_applied">Komutlar uygulandı.</string>
     <string name="commands_not_applied">Komutlar uygulanamadı.</string>
     <string name="retry">Tekrar Dene</string>
+    <string name="clear_cache">Önbelleği temizle</string>
+    <string name="reload">Yenile</string>
 </resources>

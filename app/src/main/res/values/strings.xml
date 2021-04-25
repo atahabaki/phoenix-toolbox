@@ -51,4 +51,6 @@
         <item>fixperms</item>
         <item>decrypt</item>
     </string-array>
+    <string name="clear_cache">Clear cache</string>
+    <string name="reload">Reload</string>
 </resources>

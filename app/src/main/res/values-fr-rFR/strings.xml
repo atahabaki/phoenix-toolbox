@@ -37,4 +37,6 @@
     <string name="commands_applied">Les actions appliquées.</string>
     <string name="commands_not_applied">Les commandes n\'ont pas pu être appliquées.</string>
     <string name="retry">Recommencez</string>
+    <string name="clear_cache">Vider le cache</string>
+    <string name="reload">Recharger</string>
 </resources>
