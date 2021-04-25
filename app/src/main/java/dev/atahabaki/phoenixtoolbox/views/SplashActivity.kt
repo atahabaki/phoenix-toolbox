@@ -12,7 +12,7 @@ import dev.atahabaki.phoenixtoolbox.services.HouseKeeperService
 class SplashActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP && isJobAlive()) {
             val info = JobInfo.Builder(HouseKeeperService.jobId, ComponentName(applicationContext, HouseKeeperService::class.java))
                     .setRequiresCharging(false)
                     .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
@@ -28,5 +28,15 @@ class SplashActivity: AppCompatActivity() {
             startActivity(it)
         }
         finish()
+    }
+
+    private fun isJobAlive(): Boolean {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            val scheduler = getSystemService(JOB_SCHEDULER_SERVICE) as JobScheduler
+            for (job in scheduler.allPendingJobs) {
+                if (job.id == HouseKeeperService.jobId) return true
+            }
+        }
+        return false
     }
 }
