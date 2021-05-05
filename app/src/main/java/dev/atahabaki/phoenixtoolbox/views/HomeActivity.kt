@@ -71,29 +71,29 @@ class HomeActivity : AppCompatActivity() {
         binding.mainNavigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.main_menu_home -> {
-                    dismissMainNavView()
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         replace(R.id.main_fragment_container, QuickActionsFragment()).addToBackStack("quick_actions")
                     }
+                    dismissMainNavView()
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.main_menu_recovery -> {
-                    dismissMainNavView()
                     supportFragmentManager.commit {
                         setReorderingAllowed(true)
                         replace(R.id.main_fragment_container, OpenRecoveryScriptingFragment()).addToBackStack("recovery")
                     }
+                    dismissMainNavView()
                     true
                 }
                 R.id.main_menu_coffee -> {
-                    dismissMainNavView()
                     gotoBuyMeACoffee()
+                    dismissMainNavView()
                     return@setNavigationItemSelectedListener true
                 }
                 R.id.main_menu_send_feedback -> {
-                    dismissMainNavView()
                     gotoIssues()
+                    dismissMainNavView()
                     return@setNavigationItemSelectedListener true
                 }
                 else -> false
@@ -210,7 +210,8 @@ class HomeActivity : AppCompatActivity() {
         bottomSheetBehavior = BottomSheetBehavior.from(binding.mainFramer)
         bottomSheetBehavior.isHideable = true
         bottomSheetBehavior.peekHeight = binding.mainBottomAppbar.height
-        bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
+        binding.mainFramer.setOnClickListener { dismissMainNavView() }
+        dismissMainNavView()
         initBottomAppBarNavigationClick()
         dismissWhenClickToFramerListener()
     }
