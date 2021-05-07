@@ -4,8 +4,9 @@
 
 A toolbox for:
 
-- HAL3/Camera2API toggling,
 - TWRP/Recovery Automation via OpenRecoveryScript...
+- HAL3/Camera2API toggling,
+- Cache cleaning (a.k.a. Housekeeping)...
 
 ## Screenshots
 
@@ -13,11 +14,10 @@ A toolbox for:
 
 ## How to use?
 
-It's not so complicated, but if you need a guide [here](https://github.com/atahabaki/shamrock-toolbox/wiki/How-to-use%3F)
-is one, check it out.
+It's not so complicated, but if you need a guide, you can check out this [wiki](https://github.com/atahabaki/shamrock-toolbox/wiki/How-to-use%3F).
 
 ## Goals:
 
 - [x] Toggle HAL3/Camera2Api by changing build.prop file.
 - [x] Automatic recovery operations by OpenRecoveryScript project.
-- [ ] OTA update (will come with version 1.5)...
+- [ ] OTA update (postponed to v1.5)...
