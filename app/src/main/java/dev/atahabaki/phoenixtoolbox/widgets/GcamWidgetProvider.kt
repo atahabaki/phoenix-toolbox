@@ -3,6 +3,7 @@ package dev.atahabaki.phoenixtoolbox.widgets
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
+import android.appwidget.AppWidgetProviderInfo
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -15,9 +16,12 @@ import java.io.InputStreamReader
 
 class GcamWidgetProvider : AppWidgetProvider() {
 
-    private val gcamProp = "persist.camera.HAL3.enabled"
-    private val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
-    private val TOGGLE_ACTION= "dev.atahabaki.phoenixtoolbox.appwidget.TOGGLE_ACTION"
+    companion object {
+        const val gcamProp = "persist.camera.HAL3.enabled"
+        const val REFRESH_ACTION = "android.appwidget.action.APPWIDGET_UPDATE"
+        const val TOGGLE_ACTION= "dev.atahabaki.phoenixtoolbox.appwidget.TOGGLE_ACTION"
+        const val REQUEST_CODE = 986342
+    }
 
     override fun onUpdate(
         context: Context?,
@@ -29,15 +33,17 @@ class GcamWidgetProvider : AppWidgetProvider() {
 
     private fun updateWidgets(context: Context?, appWidgetManager: AppWidgetManager?, appWidgetIds: IntArray?) {
         appWidgetIds?.forEach {
-            val views: RemoteViews = RemoteViews(
-                    context?.packageName,
-                    R.layout.widget_gcam
-            ).apply {
-                setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, TOGGLE_ACTION))
-                setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, REFRESH_ACTION))
-                updateWidgetContent(context, this)
+            if (appWidgetManager?.getAppWidgetInfo(it)?.label == context?.getString(R.string.toggle_gcam)) {
+                val views: RemoteViews = RemoteViews(
+                        context?.packageName,
+                        R.layout.widget_gcam
+                ).apply {
+                    setOnClickPendingIntent(R.id.gcam_widget_status_changer, selfPendingIntent(context, TOGGLE_ACTION))
+                    setOnClickPendingIntent(R.id.gcam_widget_reloader, selfPendingIntent(context, REFRESH_ACTION))
+                    updateWidgetContent(context, this)
+                }
+                appWidgetManager?.updateAppWidget(it, views)
             }
-            appWidgetManager?.updateAppWidget(it,views)
         }
     }
 
@@ -52,7 +58,7 @@ class GcamWidgetProvider : AppWidgetProvider() {
     private fun selfPendingIntent(context: Context?, action: String) : PendingIntent {
         val intent: Intent = Intent(context, GcamWidgetProvider::class.java)
         intent.action = action
-        return PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        return PendingIntent.getBroadcast(context, REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT)
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
