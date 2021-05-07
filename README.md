@@ -4,8 +4,8 @@
 
 A toolbox for:
 
-- HAL3/Camera2API toggling,
 - TWRP/Recovery Automation via OpenRecoveryScript...
+- HAL3/Camera2API toggling,
 - Cache cleaning (a.k.a. Housekeeping)...
 
 ## Screenshots
