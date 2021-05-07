@@ -25,15 +25,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <receiver android:name=".widgets.GcamWidgetProvider">
+        <receiver android:name=".widgets.GcamWidgetProvider" android:label="@string/toggle_gcam">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="dev.atahabaki.phoenixtoolbox.appwidget.TOGGLE_ACTION" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_gcam_info"/>
         </receiver>
-        <receiver android:name=".widgets.CleanerWidgetProvider">
+        <receiver android:name=".widgets.CleanerWidgetProvider" android:label="@string/clear_cache">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="dev.atahabaki.phoenixtoolbox.appwidget.CLEAN" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/widget_cleaner_info"/>
         </receiver>
