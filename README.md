@@ -14,8 +14,7 @@ A toolbox for:
 
 ## How to use?
 
-It's not so complicated, but if you need a guide, [here](https://github.com/atahabaki/shamrock-toolbox/wiki/How-to-use%3F)
-is one, check it out.
+It's not so complicated, but if you need a guide, you can check out this [wiki](https://github.com/atahabaki/shamrock-toolbox/wiki/How-to-use%3F).
 
 ## Goals:
 
